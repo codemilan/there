@@ -1,0 +1,58 @@
+{
+  "name": "there-web",
+  "version": "0.0.1",
+  "dependencies": {
+    "next": "6.0.3",
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.3",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-react": "7.9.1",
+    "husky": "0.14.3",
+    "lint-staged": "7.2.0",
+    "prettier": "1.13.5",
+    "prop-types": "15.6.1",
+    "react-testing-library": "4.0.1",
+    "xo": "0.21.1"
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "extends": [
+      "prettier",
+      "prettier/react",
+      "plugin:react/recommended"
+    ],
+    "env": [
+      "browser",
+      "node"
+    ],
+    "rules": {
+      "no-await-in-loop": 0,
+      "react/react-in-jsx-scope": 0,
+      "import/no-unresolved": 0,
+      "import/no-extraneous-dependencies": 0,
+      "complexity": 0,
+      "lines-between-class-members": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn test-lint",
+      "prettier",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "scripts": {
+    "dev": "next -p 6222",
+    "build": "next build",
+    "start": "next start -p 6222",
+    "test-lint": "xo"
+  }
+}

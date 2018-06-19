@@ -2,6 +2,8 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
+  ALPHA_BUILD = process.env.ALPHA_BUILD
+
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
@@ -16,6 +18,11 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>There</title>
+
+          {this.ALPHA_BUILD && (
+            <meta name="robots" content="nofollow, noindex" />
+          )}
+
           {this.props.styleTags}
         </Head>
         <body>

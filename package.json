@@ -2,9 +2,11 @@
   "name": "there-web",
   "version": "0.0.1",
   "dependencies": {
+    "babel-plugin-styled-components": "1.5.1",
     "next": "6.0.3",
     "react": "16.4.1",
-    "react-dom": "16.4.1"
+    "react-dom": "16.4.1",
+    "styled-components": "3.3.2"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
@@ -34,7 +36,8 @@
       "import/no-unresolved": 0,
       "import/no-extraneous-dependencies": 0,
       "complexity": 0,
-      "lines-between-class-members": 0
+      "lines-between-class-members": 0,
+      "unicorn/filename-case": 0
     }
   },
   "lint-staged": {
@@ -51,8 +54,9 @@
   },
   "scripts": {
     "dev": "next -p 6222",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start -p 6222",
+    "precommit": "lint-staged",
     "test-lint": "xo"
   }
 }

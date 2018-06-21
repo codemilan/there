@@ -1,4 +1,4 @@
-const LogoSvg = props => (
+const Logo = props => (
   <svg width={34} height={34} viewBox="0 0 34 34" fill="none" {...props}>
     <rect width={34} height={34} rx={6} fill="#74C5FF" />
     <path
@@ -22,4 +22,4 @@ const LogoSvg = props => (
   </svg>
 )
 
-export default LogoSvg
+export default Logo

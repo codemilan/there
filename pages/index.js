@@ -1,2 +1,2 @@
-const Index = () => <div>There!</div>
+const Index = () => <div>There Landing Page!</div>
 export default Index

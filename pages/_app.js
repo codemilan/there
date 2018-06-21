@@ -1,5 +1,11 @@
-import App, { Container } from 'next/app'
 import React from 'react'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import App, { Container } from 'next/app'
+import { ThemeProvider } from 'styled-components'
+
+// Utils
+import theme from '../utils/styles/theme'
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router: _, ctx }) {
@@ -16,8 +22,19 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <Container>
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </Container>
     )
   }
+}
+
+// Page Transition Progress
+Router.onRouteChangeStart = () => {
+  NProgress.start()
+}
+
+Router.onRouteChangeEnd = () => {
+  NProgress.done()
 }

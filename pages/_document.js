@@ -1,5 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheet, injectGlobal } from 'styled-components'
+
+// Utils
+import { modernNormalizeStyles, documentStyles } from '../utils/styles/global'
 
 export default class MyDocument extends Document {
   ALPHA_BUILD = process.env.ALPHA_BUILD
@@ -20,8 +23,14 @@ export default class MyDocument extends Document {
           <title>There</title>
 
           {this.ALPHA_BUILD && (
+            // Disallow search engines indexing on alpha builds
             <meta name="robots" content="nofollow, noindex" />
           )}
+
+          <link
+            href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Poppins"
+            rel="stylesheet"
+          />
 
           {this.props.styleTags}
         </Head>
@@ -33,3 +42,9 @@ export default class MyDocument extends Document {
     )
   }
 }
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  ${modernNormalizeStyles}
+  ${documentStyles}
+`

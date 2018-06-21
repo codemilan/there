@@ -4,12 +4,16 @@
   "dependencies": {
     "babel-plugin-styled-components": "1.5.1",
     "next": "6.0.3",
+    "nprogress": "0.2.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
+    "react-onclickout": "2.0.8",
+    "react-pose": "2.1.2",
     "styled-components": "3.3.2"
   },
   "devDependencies": {
     "@types/next": "6.0.1",
+    "@types/prop-types": "15.5.3",
     "babel-eslint": "8.2.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.9.1",
@@ -38,7 +42,8 @@
       "import/no-extraneous-dependencies": 0,
       "complexity": 0,
       "lines-between-class-members": 0,
-      "unicorn/filename-case": 0
+      "unicorn/filename-case": 0,
+      "react/prop-types": 0
     }
   },
   "lint-staged": {

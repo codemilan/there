@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import pose from 'react-pose'
+import posed from 'react-pose'
 
 // Local
 import { Link } from '../../../shared/Link'
@@ -44,15 +44,18 @@ const Wrapper = styled(Dropdown.Wrapper).attrs({
 `
 
 // Animations
-const PosedWrapper = pose(Wrapper)({
+const PosedWrapper = posed(Wrapper)({
   open: {
     y: 0,
     opacity: 1,
-    transition: { type: 'tween', duration: 120, ease: 'easeIn' },
+    transition: { type: 'tween', duration: 120, ease: 'easeInOut' },
   },
   closed: {
     y: -15,
     opacity: 0,
     transition: { type: 'tween', duration: 70, ease: 'easeInOut' },
+  },
+  passive: {
+    display: ['opacity', opacity => (opacity === 0 ? 'none' : 'block')],
   },
 })

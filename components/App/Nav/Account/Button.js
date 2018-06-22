@@ -82,7 +82,7 @@ const Wrapper = styled.button`
   border: none;
   background: transparent;
   border-radius: ${p => p.theme.radiusSmall}px;
-  color: ${p => p.theme.grayDark1};
+  color: ${p => p.theme.grayDark2};
   transition: box-shadow 180ms ease;
 
   &:focus,

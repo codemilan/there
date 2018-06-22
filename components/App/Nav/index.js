@@ -5,6 +5,9 @@ import { Link } from '../../shared/Link'
 import { Container } from '../../shared/Container'
 import LogoVector from '../../../vectors/Logo'
 import Account from './Account'
+import PageTitle from './PageTitle'
+import Status from './Status'
+import Clock from './Clock'
 
 const Nav = () => (
   <Wrapper>
@@ -26,7 +29,9 @@ const Nav = () => (
         </Left>
 
         <Center>
-          <Status>21:30</Status>
+          <Status />
+          {false && <Clock />}
+          {false && <PageTitle>Finish setting up your account!</PageTitle>}
         </Center>
 
         <Right>
@@ -79,8 +84,6 @@ const Logo = styled.div`
   margin-right: 18px;
 `
 
-const Status = styled.div``
-
 const Items = styled.div``
 
 const LinkItem = styled.a`
@@ -92,7 +95,7 @@ const LinkItem = styled.a`
   font-size: 16px;
   text-decoration: none;
 
-  color: ${p => (p.active ? 'black' : p.theme.grayDark1)};
+  color: ${p => (p.active ? 'black' : p.theme.grayDark2)};
   transition: color 180ms ease;
 
   &:hover {

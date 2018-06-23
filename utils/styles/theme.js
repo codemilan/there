@@ -16,6 +16,7 @@ export default {
   yellow: '#E4FF3E',
   orange: '#F7AC1C',
   orangeDark1: '#E99921',
+  pink: '#F03FA9',
 
   // Global Sizes
   containerWidth: 1200,

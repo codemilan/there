@@ -1,9 +1,13 @@
 import { Component } from 'react'
 import proj4 from 'proj4'
 
+// Utils
+import { convertCoorinatesOrigin } from './helpers'
+
 // Local
-import { Wrapper, MapImage, Point } from './styles'
+import { Wrapper, MapImage, MapOverlays, Point } from './styles'
 import PhotoOnMap from '../Person/PhotoOnMap'
+import PeopleGroup from './PeopleGroup'
 
 // Do not change!
 const Y_RATIO = 31991.42245737569
@@ -84,9 +88,24 @@ export default class Map extends Component {
           ]}
         />
 
-        <PhotoOnMap />
+        <MapOverlays>
+          {cities.map((point, i) => <PointFromCenter {...point} key={i} />)}
 
-        {cities.map((point, i) => <PointFromCenter {...point} key={i} />)}
+          <PeopleGroup point={convertCoorinatesOrigin(cities[0])}>
+            <PhotoOnMap />
+            <PhotoOnMap />
+            <PhotoOnMap />
+            <PhotoOnMap />
+            <PhotoOnMap />
+          </PeopleGroup>
+
+          <PeopleGroup point={convertCoorinatesOrigin(cities[3])}>
+            <PhotoOnMap />
+            <PhotoOnMap />
+            <PhotoOnMap />
+            <PhotoOnMap />
+          </PeopleGroup>
+        </MapOverlays>
       </Wrapper>
     )
   }

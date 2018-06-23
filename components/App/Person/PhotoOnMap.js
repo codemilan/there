@@ -2,50 +2,65 @@ import styled from 'styled-components'
 import { string, arrayOf } from 'prop-types'
 
 // Utils
-import { mapStatusToColor, personStatusPropType } from './helpers'
+import {
+  mapStatusToColor,
+  personStatusPropType,
+  personSizePropType,
+  photoSizesMap,
+  photoSizeToBorderSizeMap,
+  photoSizeToWhiteGapMap,
+} from './helpers'
 
 // Local
 import { RetinaImage } from '../../shared/RetinaImage'
 
 const PhotoOnMap = props => {
-  const { status, photoSrcSet } = props
+  const { status, size: sizeName, photoSrcSet } = props
+  const borderWidth = photoSizeToBorderSizeMap[sizeName]
+  const whiteGap = photoSizeToWhiteGapMap[sizeName]
+  const size = photoSizesMap[sizeName]
 
   return (
-    <CircleWrapper status={status}>
-      <Photo srcSet={photoSrcSet} />
-    </CircleWrapper>
+    <Wrapper size={size} whiteGap={whiteGap} borderWidth={borderWidth}>
+      <CircleWrapper status={status}>
+        <Photo srcSet={photoSrcSet} />
+      </CircleWrapper>
+    </Wrapper>
   )
 }
 
 PhotoOnMap.defaultProps = {
   status: 'focus',
+  size: 'large',
   photoSrcSet: ['/static/profiles/Guillermo_Rauch.jpg'],
 }
 
 PhotoOnMap.propTypes = {
   photoSrcSet: arrayOf(string).isRequired,
-  status: personStatusPropType,
+  status: personStatusPropType.isRequired,
+  size: personSizePropType.isRequired,
 }
 
 export default PhotoOnMap
 
-// Variables
-const innerSize = 42
-const borderWidth = 4
-export const size = innerSize + borderWidth * 2
-
 // Styles
-const CircleWrapper = styled.div`
-  width: ${innerSize}px;
-  height: ${innerSize}px;
-  overflow: hidden;
+const Wrapper = styled.div`
+  --white-gap: ${p => p.whiteGap}px;
+  --border-width: ${p => p.borderWidth}px;
+  --size: calc(${p => p.size - p.borderWidth * 2}px);
 
   /* Space for borders */
-  margin-top: ${borderWidth}px;
-  margin-left: ${borderWidth}px;
+  margin: var(--border-width);
+`
 
-  box-shadow: 0 0 0 2px white,
-    0 0 0 ${borderWidth}px ${p => mapStatusToColor[p.status]},
+const CircleWrapper = styled.div`
+  width: var(--size);
+  height: var(--size);
+  display: inline-flex;
+  overflow: hidden;
+
+  box-shadow: 0 0 0 var(--white-gap) white,
+    0 0 0 var(--border-width) ${p => mapStatusToColor[p.status]},
     0 4px 12px 1px rgba(0, 0, 0, 0.15);
   border-radius: 50%;
 `

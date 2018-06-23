@@ -18,6 +18,10 @@ export const MapImage = styled(RetinaImage)`
   display: block;
 `
 
+export const MapOverlays = styled.div`
+  position: relative;
+`
+
 export const Point = styled.div`
   width: 3px;
   height: 3px;

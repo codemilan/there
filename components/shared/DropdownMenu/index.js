@@ -14,6 +14,8 @@ export const Wrapper = styled.div`
 
   padding-bottom: ${space}px;
   padding-top: ${space}px;
+
+  z-index: ${p => p.theme.ZIndexPopovers};
 `
 
 Wrapper.propTypes = {

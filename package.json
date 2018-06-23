@@ -7,6 +7,7 @@
     "ms": "2.1.1",
     "next": "6.0.3",
     "nprogress": "0.2.0",
+    "proj4": "2.4.4",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-onclickout": "2.0.8",
@@ -45,7 +46,8 @@
       "complexity": 0,
       "lines-between-class-members": 0,
       "unicorn/filename-case": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "import/order": 0
     }
   },
   "lint-staged": {

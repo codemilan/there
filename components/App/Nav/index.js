@@ -45,7 +45,7 @@ const Nav = () => (
 export default Nav
 
 // Variables
-const height = 78
+const height = 64
 
 // Styles
 const Wrapper = styled.nav`

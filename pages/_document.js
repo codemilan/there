@@ -1,5 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet, injectGlobal } from 'styled-components'
+import { resetIdCounter } from 'downshift'
 
 // Utils
 import { modernNormalizeStyles, documentStyles } from '../utils/styles/global'
@@ -8,6 +9,9 @@ export default class MyDocument extends Document {
   ALPHA_BUILD = process.env.ALPHA_BUILD
 
   static getInitialProps({ renderPage }) {
+    resetIdCounter()
+
+    // Styles
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />),

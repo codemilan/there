@@ -45,4 +45,5 @@ export default class Account extends Component {
 // Styles
 const RelativeWrapper = styled.div`
   position: relative;
+  font-family: 'Poppins', var(--system-font);
 `

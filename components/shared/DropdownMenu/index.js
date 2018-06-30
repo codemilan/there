@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { number, bool } from 'prop-types'
 
 export const sidePaddingSmaller = 16
@@ -50,22 +50,31 @@ GroupTitle.propTypes = {
 }
 
 export const Item = styled.div`
-  height: 36px;
-  line-height: 36px;
+  --height: ${p => (p.size === 'small' ? 30 : 36)}px;
+
+  height: var(--height);
+  line-height: var(--height);
   padding-left: ${sidePadding}px;
   padding-right: 4px;
   display: block;
   width: 100%;
 
-  font-size: ${p => p.theme.fontMedium15}px;
-  font-family: 'Poppins';
+  font-size: ${p =>
+    p.size === 'small' ? p.theme.fontMedium14 : p.theme.fontMedium15}px;
   text-align: left;
   text-decoration: none;
 
   cursor: pointer;
   background: none;
-  color: ${p => p.theme.grayDark1};
+  color: ${p => p.theme.grayDark2};
   transition: color 180ms ease, background 180ms ease;
+
+  ${p =>
+    p.highlighted &&
+    css`
+      background: ${p => p.theme.grayLight2};
+      color: black;
+    `};
 
   &:hover,
   &:focus {

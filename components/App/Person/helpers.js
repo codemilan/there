@@ -56,9 +56,16 @@ export const photoSizeToBorderSizeMap = {
 
 export const photoSizeToWhiteGapMap = {
   [personSizes.TINY]: 1,
-  [personSizes.SMALL]: 1,
+  [personSizes.SMALL]: 1.5,
   [personSizes.NORMAL]: 2,
   [personSizes.LARGE]: 2,
+}
+
+export const photoSizeToGapMap = {
+  [personSizes.TINY]: 2,
+  [personSizes.SMALL]: -4,
+  [personSizes.NORMAL]: 5,
+  [personSizes.LARGE]: 6,
 }
 
 export const personSizePropType = oneOf(allPersonSizes)

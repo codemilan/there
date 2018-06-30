@@ -4,6 +4,11 @@ import { css } from 'styled-components'
 import { retina } from './media'
 
 export const documentStyles = css`
+  html {
+    --system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
   ${retina(css`
     * {
       -webkit-font-smoothing: antialiased;

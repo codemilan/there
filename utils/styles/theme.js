@@ -26,6 +26,7 @@ export default {
 
   fontTiny115: 11.5,
   fontSmall13: 13,
+  fontMedium14: 14,
   fontMedium15: 15,
   fontDefault16: 16,
 

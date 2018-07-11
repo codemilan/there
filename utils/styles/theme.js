@@ -36,6 +36,7 @@ export default {
   fontTitle: `Poppins`,
 
   // Z Indexes
+  ZIndexNav: 15,
   ZIndexPopovers: 20,
   ZIndexModals: 30,
 }

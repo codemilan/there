@@ -1,13 +1,20 @@
+import styled from 'styled-components'
+
 // Local
 import { Container } from '../shared/Container'
 import Select from '../shared/Select'
 
 const SubNav = () => (
-  <nav>
+  <Wrapper>
     <Container>
       <Select />
     </Container>
-  </nav>
+  </Wrapper>
 )
 
 export default SubNav
+
+// Styles
+const Wrapper = styled.nav`
+  padding: 4px 0;
+`

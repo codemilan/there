@@ -105,7 +105,7 @@ const Button = styled.button`
   font-size: ${p => p.theme.fontMedium14}px;
 
   cursor: pointer;
-  color: ${p => p.theme.grayDark1};
+  color: ${p => p.theme.grayDark2};
   border: 1px solid ${p => p.theme.grayLight1};
   border-radius: ${p => p.theme.radiusSmall}px;
   background: none;
@@ -114,7 +114,7 @@ const Button = styled.button`
 
   &:focus {
     border-color: ${p => p.theme.grayDark1};
-    color: ${p => p.theme.grayDark2};
+    color: ${p => p.theme.grayDark3};
   }
 `
 
@@ -140,13 +140,13 @@ const Input = styled(AutosizeInput).attrs({
     padding-left: 7px;
     align-self: stretch;
 
-    color: ${p => p.theme.grayDark2};
+    color: ${p => p.theme.grayDark3};
     border: none;
     background: none;
     outline: none;
 
     ::placeholder {
-      color: ${p => p.theme.grayDark2};
+      color: ${p => p.theme.grayDark1};
     }
   }
 `

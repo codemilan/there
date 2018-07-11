@@ -1,3 +1,4 @@
+import { Component } from 'react'
 import styled from 'styled-components'
 
 // Local
@@ -9,56 +10,92 @@ import PageTitle from './PageTitle'
 import Status from './Status'
 import Clock from './Clock'
 
-const Nav = () => (
-  <Wrapper>
-    <Container>
-      <Grid>
-        <Left>
-          <Logo>
-            <LogoVector />
-          </Logo>
+export default class Nav extends Component {
+  state = {
+    scrolled: false,
+  }
 
-          <Items>
-            <Link href="/app" passHref passActive>
-              <LinkItem>Team</LinkItem>
-            </Link>
-            <Link href="/app/schedule" passHref passActive>
-              <LinkItem>Schedule</LinkItem>
-            </Link>
-          </Items>
-        </Left>
+  render() {
+    return (
+      <Wrapper>
+        <NavContainer border={this.state.scrolled}>
+          <Grid>
+            <Left>
+              <Logo>
+                <LogoVector />
+              </Logo>
 
-        <Center>
-          <Status />
-          {false && <Clock />}
-          {false && <PageTitle>Finish setting up your account!</PageTitle>}
-        </Center>
+              <Items>
+                <Link href="/app" passHref passActive>
+                  <LinkItem>Team</LinkItem>
+                </Link>
+                <Link href="/app/schedule" passHref passActive>
+                  <LinkItem>Schedule</LinkItem>
+                </Link>
+              </Items>
+            </Left>
 
-        <Right>
-          <Account />
-        </Right>
-      </Grid>
-    </Container>
-  </Wrapper>
-)
+            <Center>
+              <Status />
+              {false && <Clock />}
+              {false && <PageTitle>Finish setting up your account!</PageTitle>}
+            </Center>
 
-export default Nav
+            <Right>
+              <Account />
+            </Right>
+          </Grid>
+        </NavContainer>
+      </Wrapper>
+    )
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.scrolled, true)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.scrolled, true)
+  }
+
+  scrolled = () => {
+    if (window.scrollY < 5 && this.state.scrolled === true) {
+      this.setState({ scrolled: false })
+    } else if (window.scrollY >= 5 && this.state.scrolled === false) {
+      this.setState({ scrolled: true })
+    }
+  }
+}
 
 // Variables
-const height = 64
+const height = 60
 
 // Styles
 const Wrapper = styled.nav`
   height: ${height}px;
+
+  background-color: white;
   background-image: linear-gradient(
     180deg,
     rgba(116, 197, 255, 0.06) 0%,
     rgba(255, 255, 255, 0) 34.18%
   );
+
+  position: sticky;
+  top: 0;
+  z-index: ${p => p.theme.ZIndexNav};
+`
+
+const NavContainer = styled(Container)`
+  border-bottom: 1px solid
+    ${p => (p.border ? p.theme.grayLight1 : `transparent`)};
+  transition: border 150ms ease;
 `
 
 const Grid = styled.div`
   height: ${height}px;
+  padding-top: 4px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;

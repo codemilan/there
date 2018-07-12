@@ -24,19 +24,19 @@
     "@types/prop-types": "15.5.3",
     "babel-eslint": "8.2.5",
     "babel-plugin-styled-components": "1.5.1",
+    "eslint-config-prettier": "2.9.0",
     "eslint-config-react-app": "2.1.0",
+    "eslint-plugin-flowtype": "2.50.0",
     "eslint-plugin-jest": "21.17.0",
     "eslint-plugin-jsx-a11y": "6.1.0",
     "eslint-plugin-prettier": "2.6.0",
-    "eslint-plugin-flowtype": "2.50.0",
     "eslint-plugin-react": "7.10.0",
     "flow-bin": "0.76.0",
     "husky": "0.14.3",
     "lint-staged": "7.2.0",
     "prettier": "1.13.5",
     "prop-types": "15.6.1",
-    "react-testing-library": "4.0.1",
-    "xo": "0.21.1"
+    "react-testing-library": "4.0.1"
   },
   "lint-staged": {
     "*.js": [

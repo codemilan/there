@@ -207,10 +207,6 @@
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.42.tgz#9aa8b3e5dc72abea6b4f686712a7363cb29ea057"
 
-"@babel/helper-plugin-utils@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.52.tgz#2f058c5f7c3a5fe4bc219036b2e78e11bddeb7ad"
-
 "@babel/helper-plugin-utils@7.0.0-beta.53":
   version "7.0.0-beta.53"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.53.tgz#d64458636ffc258b42714a9dd93aeb6f8b8cf3ed"
@@ -393,11 +389,11 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.42"
 
-"@babel/plugin-syntax-flow@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.0.0-beta.52.tgz#8125c1de15b352cb71f6e22200f888a546772c8c"
+"@babel/plugin-syntax-flow@7.0.0-beta.53":
+  version "7.0.0-beta.53"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.0.0-beta.53.tgz#6e4ee8bd57b20e95425ffed995884967d56e28aa"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.52"
+    "@babel/helper-plugin-utils" "7.0.0-beta.53"
 
 "@babel/plugin-syntax-jsx@7.0.0-beta.42":
   version "7.0.0-beta.42"
@@ -490,12 +486,12 @@
     "@babel/helper-builder-binary-assignment-operator-visitor" "7.0.0-beta.42"
     "@babel/helper-plugin-utils" "7.0.0-beta.42"
 
-"@babel/plugin-transform-flow-strip-types@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-flow-strip-types/-/plugin-transform-flow-strip-types-7.0.0-beta.52.tgz#321c1dd84ba44ee3429f995c7bf58cd0ababb714"
+"@babel/plugin-transform-flow-strip-types@7.0.0-beta.53":
+  version "7.0.0-beta.53"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-flow-strip-types/-/plugin-transform-flow-strip-types-7.0.0-beta.53.tgz#d67fa5b4f78cfc1f9a44556b0623a22fb2e7bc63"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.52"
-    "@babel/plugin-syntax-flow" "7.0.0-beta.52"
+    "@babel/helper-plugin-utils" "7.0.0-beta.53"
+    "@babel/plugin-syntax-flow" "7.0.0-beta.53"
 
 "@babel/plugin-transform-for-of@7.0.0-beta.42":
   version "7.0.0-beta.42"

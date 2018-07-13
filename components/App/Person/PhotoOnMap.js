@@ -1,27 +1,40 @@
+// @flow
+import React from 'react'
 import styled from 'styled-components'
-import { string, arrayOf } from 'prop-types'
 
 // Utils
 import {
   mapStatusToColor,
-  personStatusPropType,
-  personSizePropType,
   photoSizesMap,
   photoSizeToBorderSizeMap,
   photoSizeToWhiteGapMap,
+  type OnMapPhotoSize,
 } from './helpers'
+import type { MemberStatus } from '../../shared/types'
 
 // Local
 import { RetinaImage } from '../../shared/RetinaImage'
 
-const PhotoOnMap = props => {
-  const { status, size: sizeName, photoSrcSet } = props
+type Props = {
+  photoSrcSet: string[],
+  status: MemberStatus,
+  size: OnMapPhotoSize,
+  onClick: () => void,
+}
+
+const PhotoOnMap = (props: Props) => {
+  const { status, size: sizeName, photoSrcSet, onClick } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
   const size = photoSizesMap[sizeName]
 
   return (
-    <Wrapper size={size} whiteGap={whiteGap} borderWidth={borderWidth}>
+    <Wrapper
+      size={size}
+      whiteGap={whiteGap}
+      borderWidth={borderWidth}
+      onClick={onClick}
+    >
       <CircleWrapper status={status}>
         <Photo srcSet={photoSrcSet} />
       </CircleWrapper>
@@ -33,12 +46,6 @@ PhotoOnMap.defaultProps = {
   status: 'focus',
   size: 'tiny',
   photoSrcSet: ['/static/profiles/Guillermo_Rauch.jpg'],
-}
-
-PhotoOnMap.propTypes = {
-  photoSrcSet: arrayOf(string).isRequired,
-  status: personStatusPropType.isRequired,
-  size: personSizePropType.isRequired,
 }
 
 export default PhotoOnMap

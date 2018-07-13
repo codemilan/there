@@ -1,11 +1,22 @@
-import { Children } from 'react'
+// @flow
+import React, { Children } from 'react'
 import styled, { css } from 'styled-components'
 
-// Utils
-import { photoSizeToGapMap, personSizePropType, photoSizesMap } from './helpers'
+// Utilities
+import {
+  photoSizeToGapMap,
+  photoSizesMap,
+  type OnMapPhotoSize,
+} from './helpers'
+import type { Point } from '../../shared/types'
 
-// Veriables
-const PeopleGroup = ({ point, size, children }) => {
+type Props = {
+  size: OnMapPhotoSize,
+  point: Point,
+  children: any[],
+}
+
+const PeopleGroup = ({ size, point, children }: Props) => {
   // To center align last odd item
   const childrenCount = Children.count(children)
   const shouldVertical = childrenCount < 3
@@ -28,10 +39,6 @@ const PeopleGroup = ({ point, size, children }) => {
 
 PeopleGroup.defaultProps = {
   size: 'tiny',
-}
-
-PeopleGroup.propTypes = {
-  size: personSizePropType.isRequired,
 }
 
 export default PeopleGroup

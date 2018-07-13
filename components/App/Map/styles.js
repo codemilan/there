@@ -16,6 +16,10 @@ export const MapImage = styled(RetinaImage)`
   top: 0;
   left: 0;
   display: block;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 `
 
 export const MapOverlays = styled.div`

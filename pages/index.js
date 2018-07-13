@@ -1,9 +1,5 @@
 import Modal from '../components/shared/Modal'
 
-const Index = () => (
-  <div>
-    There Landing Page!
-    <Modal>hi</Modal>
-  </div>
-)
+const Index = () => <div>There Landing Page!</div>
+
 export default Index

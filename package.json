@@ -18,15 +18,14 @@
     "styled-components": "3.3.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "7.0.0-beta.53",
-    "@babel/plugin-transform-flow-strip-types": "7.0.0-beta.53",
-    "@types/next": "6.0.1",
-    "@types/prop-types": "15.5.3",
     "babel-eslint": "8.2.5",
     "babel-plugin-styled-components": "1.5.1",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "eslint": "5.1.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-react-app": "2.1.0",
     "eslint-plugin-flowtype": "2.50.0",
+    "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jest": "21.17.0",
     "eslint-plugin-jsx-a11y": "6.1.0",
     "eslint-plugin-prettier": "2.6.0",

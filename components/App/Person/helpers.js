@@ -1,10 +1,9 @@
-import { oneOf } from 'prop-types'
-
+// @flow
 // Statuses
 export const personStatus = {
-  WORK: 'work',
-  SLEEP: 'sleep',
-  FOCUS: 'focus',
+  WORK: 'working',
+  SLEEP: 'asleep',
+  FOCUS: 'focused',
   NOT_DISTURB: 'not-disturb',
 }
 
@@ -15,30 +14,27 @@ const allPersonStatuses = [
   personStatus.NOT_DISTURB,
 ]
 
-export const personStatusPropType = oneOf(allPersonStatuses)
-
 // Colors
 export const mapStatusToColor = {
+  // $FlowFixMe
   [personStatus.WORK]: p => p.theme.green,
+  // $FlowFixMe
   [personStatus.SLEEP]: p => p.theme.teal,
+  // $FlowFixMe
   [personStatus.FOCUS]: p => p.theme.pink,
+  // $FlowFixMe
   [personStatus.NOT_DISTURB]: p => p.theme.teal,
 }
 
 // Sizes
-export const personSizes = {
+export type OnMapPhotoSize = 'tiny' | 'small' | 'normal' | 'large'
+
+export const personSizes: { [key: string]: OnMapPhotoSize } = {
   TINY: 'tiny',
   SMALL: 'small',
   NORMAL: 'normal',
   LARGE: 'large',
 }
-
-export const allPersonSizes = [
-  personSizes.TINY,
-  personSizes.SMALL,
-  personSizes.NORMAL,
-  personSizes.LARGE,
-]
 
 export const photoSizesMap = {
   [personSizes.TINY]: 24,
@@ -67,5 +63,3 @@ export const photoSizeToGapMap = {
   [personSizes.NORMAL]: 5,
   [personSizes.LARGE]: 6,
 }
-
-export const personSizePropType = oneOf(allPersonSizes)

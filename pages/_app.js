@@ -1,8 +1,7 @@
-import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import App, { Container } from 'next/app'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 // Utils
 import theme from '../utils/styles/theme'
@@ -23,7 +22,9 @@ export default class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <div>
+            <Component {...pageProps} />
+          </div>
         </ThemeProvider>
       </Container>
     )

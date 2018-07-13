@@ -1,4 +1,5 @@
-import { Component } from 'react'
+// @flow
+import React, { Component } from 'react'
 
 // Utils
 import { CENTER } from './helpers'
@@ -11,7 +12,11 @@ import PhotoOnMap from '../Person/PhotoOnMap'
 import PeopleGroup from '../Person/PeopleGroup'
 import LayOutItems from './LayOutItems'
 
-export default class Map extends Component {
+type Props = {
+  onMemberSelect: (memberId: string) => void,
+}
+
+export default class Map extends Component<Props> {
   render() {
     return (
       <Wrapper>
@@ -24,10 +29,6 @@ export default class Map extends Component {
         />
 
         <MapOverlays>
-          {Object.values(cities).map((point, i) => (
-            <PointFromCenter {...point} key={i} />
-          ))}
-
           <LayOutItems items={people}>
             {({ groups, sizeKey }) =>
               groups.map((group, groupIndex) => (
@@ -42,6 +43,7 @@ export default class Map extends Component {
                       size={sizeKey}
                       photoSrcSet={item.photoSrcSet}
                       status={item.status}
+                      onClick={() => this.props.onMemberSelect(item.id)}
                     />
                   ))}
                 </PeopleGroup>
@@ -53,7 +55,3 @@ export default class Map extends Component {
     )
   }
 }
-
-const PointFromCenter = ({ x, y, ...props }) => (
-  <Point x={CENTER.x + x} y={CENTER.y - y} {...props} />
-)

@@ -9,6 +9,10 @@ export const documentStyles = css`
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
+  body {
+    overflow: hidden;
+  }
+
   ${retina(css`
     * {
       -webkit-font-smoothing: antialiased;

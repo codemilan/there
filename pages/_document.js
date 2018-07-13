@@ -1,5 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet, injectGlobal } from 'styled-components'
+import styled, { ServerStyleSheet, injectGlobal } from 'styled-components'
 import { resetIdCounter } from 'downshift'
 
 // Utils
@@ -39,7 +39,10 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
         </Head>
         <body>
-          <Main />
+          <AppRoot>
+            <Main />
+          </AppRoot>
+          <ModalRoot />
           <NextScript />
         </body>
       </html>
@@ -51,4 +54,15 @@ export default class MyDocument extends Document {
 injectGlobal`
   ${modernNormalizeStyles}
   ${documentStyles}
+`
+
+// Styles
+const AppRoot = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+`
+
+const ModalRoot = styled.div.attrs({ id: 'modal-root' })`
+  pointer-events: auto;
 `

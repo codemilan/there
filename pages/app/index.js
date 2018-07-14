@@ -13,7 +13,7 @@ type State = {
 }
 
 export default class App extends React.Component<{}, State> {
-  state = { selectedMemberId: null }
+  state = { selectedMemberId: '1' }
 
   render() {
     const { selectedMemberId } = this.state

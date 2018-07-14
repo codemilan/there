@@ -1,11 +1,9 @@
 [ignore]
-.*/node_modules/*
+.*/*.test.js
 
 [include]
 
 [libs]
-types/
-flow-typed/
 
 [options]
 suppress_comment=.*\\$FlowFixMe

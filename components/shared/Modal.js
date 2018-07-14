@@ -2,7 +2,6 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
-// $FlowFixMe
 import posed, { PoseGroup } from 'react-pose'
 
 // Local
@@ -11,7 +10,7 @@ import DialogWindow from './DialogWindow'
 
 export type Props = {
   width?: number,
-  maxHeight?: number,
+  height?: number,
   children: any,
   isOpen: boolean,
   onClose: () => void,
@@ -26,7 +25,7 @@ export default class Modal extends React.Component<Props> {
     typeof window !== 'undefined' ? document.getElementById('modal-root') : null
 
   render() {
-    const { children, isOpen, width, maxHeight } = this.props
+    const { children, isOpen, width, height } = this.props
 
     const modal = (
       <Overlay
@@ -36,7 +35,7 @@ export default class Modal extends React.Component<Props> {
         <PoseGroup>
           {isOpen && [
             <FadingShadowBg key="shadow" />,
-            <PoppingDialog key="modal" width={width} maxHeight={maxHeight}>
+            <PoppingDialog key="modal" width={width} height={height}>
               {children}
             </PoppingDialog>,
           ]}
@@ -65,11 +64,22 @@ export default class Modal extends React.Component<Props> {
     this.close()
   }
 
+  onKeyDown = (e: KeyboardEvent) => {
+    if (e.code !== 'Escape' || !this.props.isOpen) {
+      return
+    }
+
+    this.props.onClose()
+  }
+
   componentDidMount() {
     if (this.props.isOpen) {
       // $FlowFixMe
       document.body.style.overflow = 'hidden'
     }
+
+    // Listen for Escape key
+    document.addEventListener('keydown', this.onKeyDown)
   }
 
   componentDidUpdate() {
@@ -80,12 +90,15 @@ export default class Modal extends React.Component<Props> {
   componentWillUnmount() {
     // $FlowFixMe
     document.body.style.overflow = 'unset'
+
+    // Listen for Escape key
+    document.removeEventListener('keydown', this.onKeyDown)
   }
 }
 
-const Dialog = ({ width, maxHeight, children, innerRef }) => (
+const Dialog = ({ width, height, children, innerRef }) => (
   <Aligner key="modal" innerRef={innerRef}>
-    <DialogWindow width={width} maxHeight={maxHeight}>
+    <DialogWindow width={width} height={height}>
       {children}
     </DialogWindow>
   </Aligner>
@@ -95,7 +108,7 @@ const Dialog = ({ width, maxHeight, children, innerRef }) => (
 const Aligner = styled.div`
   width: 100%;
   height: 100%;
-  padding: 80px;
+  padding: 60px;
 
   display: flex;
   justify-content: center;
@@ -144,7 +157,7 @@ const PoppingDialog = posed(Dialog)({
     }),
   },
   exit: {
-    scale: 0.95,
+    scale: 0.98,
     opacity: 0,
     transition: props => ({
       ...props,

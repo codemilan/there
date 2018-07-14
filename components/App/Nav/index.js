@@ -50,18 +50,21 @@ export default class Nav extends Component {
     )
   }
 
+  appRoot: ?Element =
+    typeof window !== 'undefined' ? document.getElementById('app-root') : null
+
   componentDidMount() {
-    document.addEventListener('scroll', this.scrolled, true)
+    this.appRoot.addEventListener('scroll', this.scrolled, true)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('scroll', this.scrolled, true)
+    this.appRoot.removeEventListener('scroll', this.scrolled, true)
   }
 
   scrolled = () => {
-    if (window.scrollY < 5 && this.state.scrolled === true) {
+    if (this.appRoot.scrollTop < 5 && this.state.scrolled === true) {
       this.setState({ scrolled: false })
-    } else if (window.scrollY >= 5 && this.state.scrolled === false) {
+    } else if (this.appRoot.scrollTop >= 5 && this.state.scrolled === false) {
       this.setState({ scrolled: true })
     }
   }

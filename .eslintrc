@@ -1,6 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["prettier", "prettier/react", "react-app"],
+  "plugins": ["flowtype"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

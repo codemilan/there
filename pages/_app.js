@@ -22,9 +22,12 @@ export default class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <div>
-            <Component {...pageProps} />
-          </div>
+          <>
+            <AppRoot>
+              <Component {...pageProps} />
+            </AppRoot>
+            <ModalRoot />
+          </>
         </ThemeProvider>
       </Container>
     )
@@ -39,3 +42,14 @@ Router.onRouteChangeStart = () => {
 Router.onRouteChangeEnd = () => {
   NProgress.done()
 }
+
+// Styles
+const AppRoot = styled.div.attrs({ id: 'app-root' })`
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+`
+
+const ModalRoot = styled.div.attrs({ id: 'modal-root' })`
+  pointer-events: auto;
+`

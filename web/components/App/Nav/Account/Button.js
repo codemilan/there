@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 // Local
-import DoubleArrows from '../../../../vectors/DoubleArrows'
+import DoubleArrows from '../../../shared/vectors/DoubleArrows'
 
 const Button = ({ firstName, photoUrl, active, onClick }) => (
   <Wrapper onClick={onClick} active={active}>

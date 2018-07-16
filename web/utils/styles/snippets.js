@@ -1,7 +1,7 @@
 // @flow
 import { css } from 'styled-components'
 
-export const hideScrollBars = css`
+export const hideScrollBars: any = css`
   -ms-overflow-style: none;
 
   ::-webkit-scrollbar {

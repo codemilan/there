@@ -13,7 +13,7 @@ type State = {
 }
 
 export default class App extends React.Component<{}, State> {
-  state = { selectedMemberId: '1' }
+  state = { selectedMemberId: 'xxx' }
 
   render() {
     const { selectedMemberId } = this.state
@@ -27,6 +27,7 @@ export default class App extends React.Component<{}, State> {
         <MembersModal
           isOpen={Boolean(selectedMemberId)}
           selectedMemberId={selectedMemberId}
+          onMemberSelect={this.memberSelected}
           onClose={this.modalClosed}
         />
       </>

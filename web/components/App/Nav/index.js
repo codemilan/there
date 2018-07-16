@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Local
 import { Link } from '../../shared/Link'
 import { Container } from '../../shared/Container'
-import LogoVector from '../../../vectors/Logo'
+import LogoVector from '../../shared/vectors/Logo'
 import Account from './Account'
 import PageTitle from './PageTitle'
 import Status from './Status'

@@ -1,11 +1,14 @@
 # Node
-node_modules/
+node_modules
 package-lock.json
 *.log
 
-# Next
-.next
-out
+# Web
+web/.next
+web/out
 
 # Editor
 .vscode
+
+# General
+.DS_Store

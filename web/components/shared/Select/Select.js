@@ -5,7 +5,7 @@ import AutosizeInput from 'react-input-autosize'
 
 // Local
 import { Wrapper as DropdownWrapper, ButtonItem } from '../DropdownMenu'
-import ChevronDown from '../../../vectors/ChevronDown'
+import ChevronDown from '../vectors/ChevronDown'
 
 class Select extends Component {
   render() {

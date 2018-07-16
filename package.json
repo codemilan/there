@@ -1,27 +1,13 @@
 {
-  "name": "there-web",
+  "name": "there",
+  "license": "BSD-3-Clause",
   "version": "0.0.1",
-  "dependencies": {
-    "downshift": "2.0.10",
-    "fast-memoize": "2.4.0",
-    "memoize-one": "3.1.1",
-    "moment-timezone": "0.5.20",
-    "ms": "2.1.1",
-    "next": "6.1.1",
-    "nprogress": "0.2.0",
-    "proj4": "2.4.4",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
-    "react-input-autosize": "2.2.1",
-    "react-onclickout": "2.0.8",
-    "react-pose": "2.1.2",
-    "styled-components": "3.3.2",
-    "unstated": "2.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "8.2.5",
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "cross-env": "5.2.0",
     "eslint": "5.1.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-react-app": "2.1.0",
@@ -34,15 +20,12 @@
     "flow-bin": "0.76.0",
     "husky": "0.14.3",
     "lint-staged": "7.2.0",
-    "prettier": "1.13.5",
-    "prop-types": "15.6.1",
-    "react-testing-library": "4.0.1"
+    "prettier": "1.13.5"
   },
   "lint-staged": {
     "*.js": [
-      "yarn test-lint",
       "eslint --fix",
-      "prettier",
+      "prettier --write",
       "git add"
     ]
   },
@@ -52,11 +35,11 @@
     "trailingComma": "all"
   },
   "scripts": {
-    "dev": "next -p 6222",
-    "build": "next build && next export",
-    "start": "next start -p 6222",
+    "dev:web": "(cd web && yarn dev)",
+    "build:web": "(cd web && yarn build)",
+    "start:web": "(cd web && yarn start)",
     "precommit": "lint-staged",
-    "test-lint": "eslint",
+    "test-lint": "eslint .",
     "test-type": "flow"
   }
 }

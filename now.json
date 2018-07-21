@@ -1,3 +1,7 @@
 {
-  "regions": ["sfo1"]
+  "type": "docker",
+  "regions": ["sfo1"],
+  "env": {
+    "PRISMA_SECRET": "xxxx"
+  }
 }

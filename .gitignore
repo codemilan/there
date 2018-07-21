@@ -1,14 +1,17 @@
-# Node
+# General
 node_modules
 package-lock.json
 *.log
+.vscode
+.DS_Store
+.env
+
+# Now
+now-secrets.json
 
 # Web
 web/.next
 web/out
 
-# Editor
-.vscode
-
-# General
-.DS_Store
+# Builds
+build-*

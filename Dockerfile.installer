@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------
+# installer
+# -----------------------------------------------------------------------------
+
+FROM node:9.7.0-alpine
+WORKDIR /app
+
+# Copy whole workspace into the container. This seems crazy but
+# is actually more efficient than copying each package.json
+# individually.
+COPY . /app
+
+# Install system and node dependencies and clean up afterwards.
+RUN \
+  apk add --update --no-cache --virtual .apk git && \
+  yarn install --no-cache --ignore-engines --frozen-lockfile --pure-lockfile && \
+  apk del .apk

@@ -1,0 +1,18 @@
+type User {
+  id: ID! @unique
+  name: String!
+  firstName: String!
+  lastName: String!
+  profilePhoto: String
+  email: String! @unique
+  username: String
+  timezone: String!
+  baseCity: String
+  baseCountry: String
+  baseLatitude: Float
+  baseLongitude: Float
+  googleProviderId: String
+  deletedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

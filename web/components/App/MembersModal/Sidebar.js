@@ -5,12 +5,21 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 
 type Props = {}
-
-export default class Sidebar extends Component<Props> {
+type State = {
+  inputValue: string,
+}
+export default class Sidebar extends Component<Props, State> {
+  state = {
+    inputValue: '',
+  }
   render() {
     return (
       <div>
-        <SearchBar value="asdasd" />
+        <SearchBar
+          value={this.state.inputValue}
+          onChange={e => this.setState({ inputValue: e.target.value })}
+          placeholder="Find..."
+        />
       </div>
     )
   }

@@ -1,0 +1,18 @@
+# Ignore as many files as possible. This keeps the build context small.
+*
+
+# White-list package definitions.
+!/api/package.json
+!/web/package.json
+
+# White-list shared files.
+!/shared/
+
+# White-list workspace root.
+!/yarn.lock
+!/package.json
+!/now.json
+
+# TODO: Move this into src directories.
+!/api/*
+!/web/*

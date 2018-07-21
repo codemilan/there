@@ -1,0 +1,129 @@
+version: "3.4"
+
+# Volume definitions for common workspace root dependencies.
+x-workspace-package: &workspace-package ./package.json:/app/package.json:delegated
+x-workspace-now: &workspace-now ./now.json:/app/now.json:delegated
+x-workspace-now-secrets: &workspace-now-secrets ./now-secrets.json:/app/now-secrets.json:delegated
+x-workspace-shared: &workspace-shared ./shared:/app/shared:delegated
+x-workspace-node-modules: &workspace-node-modules ./node_modules:/app/node_modules:delegated
+x-workspace-node-modules-cache: &workspace-node-modules-cache node_modules_cache:/app/node_modules/.cache
+
+# Volume definitions for common linked packages.
+x-package-api: &package-api ./api:/app/api:delegated
+x-package-web: &package-web ./web:/app/web:delegated
+
+volumes:
+  node_modules_cache:
+  mysql:
+
+services:
+  redis:
+    image: redis:3.2.11
+    ports:
+      - 6379:6379
+    networks:
+      - there
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: prisma
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - there
+
+  prisma:
+    image: prismagraphql/prisma:1.11
+    restart: always
+    ports:
+    - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          default:
+            connector: mysql
+            host: mysql
+            port: 3306
+            user: root
+            password: prisma
+            migrations: true
+    networks:
+      - there
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile.development
+      target: development
+    volumes:
+      - *workspace-package
+      - *workspace-now
+      - *workspace-now-secrets
+      - *workspace-shared
+      - *workspace-node-modules
+      - *workspace-node-modules-cache
+      - *package-web
+      - *package-api
+    ports:
+      - "3000:3000"
+    networks:
+      - there
+    depends_on:
+      - redis
+      - mysql
+      - prisma
+
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile.development
+      target: development
+    volumes:
+      - *workspace-package
+      - *workspace-now
+      - *workspace-now-secrets
+      - *workspace-shared
+      - *workspace-node-modules
+      - *workspace-node-modules-cache
+      - *package-web
+      - *package-api
+    environment:
+      - TEST_DB=${TEST_DB}
+    ports:
+      - "3001:3001"
+    networks:
+      - there
+    depends_on:
+      - redis
+      - mysql
+      - prisma
+
+  # These services are not meant to be spun up. They are just here to benefit from the
+  # layer caching of this docker-compose file since the layer cache is not shared between
+  # docker and docker-compose.
+  web-prod:
+    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
+    image: "therepm/web:latest"
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile.development
+    depends_on:
+      - web
+
+  api-prod:
+    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
+    image: "therepm/api:latest"
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile.development
+    depends_on:
+      - api
+
+networks:
+  there:
+    external: true

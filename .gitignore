@@ -13,3 +13,5 @@ now-secrets.json
 web/.next
 web/out
 
+# Builds
+build-*

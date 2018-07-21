@@ -1,7 +1,8 @@
 {
+  "private": true,
   "name": "there",
-  "license": "BSD-3-Clause",
   "version": "0.0.1",
+  "license": "BSD-3-Clause",
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "8.2.5",
@@ -18,9 +19,11 @@
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.10.0",
     "flow-bin": "0.76.0",
+    "graphql-cli": "2.16.4",
     "husky": "0.14.3",
     "lint-staged": "7.2.0",
-    "prettier": "1.13.5"
+    "prettier": "1.13.5",
+    "prisma": "1.11.1"
   },
   "lint-staged": {
     "*.js": [
@@ -39,6 +42,8 @@
     "build:web": "(cd web && yarn build)",
     "start:web": "(cd web && yarn start)",
     "precommit": "lint-staged",
+    "prisma": "cd prisma && prisma",
+    "graphql": "graphql",
     "test-lint": "eslint .",
     "test-type": "flow"
   }

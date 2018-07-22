@@ -74,9 +74,7 @@ services:
     networks:
       - there
     depends_on:
-      - redis
-      - mysql
-      - prisma
+      - api
 
   api:
     build:

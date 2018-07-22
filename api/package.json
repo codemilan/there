@@ -4,8 +4,12 @@
   "version": "0.0.0",
   "dependencies": {
     "apollo-server": "2.0.0",
+    "axios": "0.18.0",
+    "debug": "3.1.0",
     "esm": "3.0.72",
-    "graphql": "0.13.2"
+    "graphql": "0.13.2",
+    "now-env": "3.1.0",
+    "raven": "2.6.3"
   },
   "devDependencies": {
     "flow-bin": "0.77.0",

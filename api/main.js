@@ -1,11 +1,9 @@
 // @flow
+const debug = require('debug')('api')
 import { ApolloServer, gql } from 'apollo-server'
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001
 
-// This is a (sample) collection of books we'll be able to query
-// the GraphQL server for.  A more complete example might fetch
-// from an existing data source like a REST API or database.
 const books = [
   {
     title: 'Harry Potter and the Chamber of Secrets',
@@ -17,8 +15,6 @@ const books = [
   },
 ]
 
-// Type definitions define the "shape" of your data and specify
-// which ways the data can be fetched from the GraphQL server.
 const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
 
@@ -51,5 +47,5 @@ const server = new ApolloServer({ typeDefs, resolvers })
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
 server.listen(PORT).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
+  debug(`🚀  Server ready at ${url}`)
 })

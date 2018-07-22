@@ -1,7 +1,6 @@
 {
-  "type": "docker",
   "regions": ["sfo1"],
   "env": {
-    "PRISMA_SECRET": "xxxx"
+    "SENTRY_DSN_SERVER": "@there2-sentry-dsn-server"
   }
 }

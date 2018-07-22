@@ -27,6 +27,8 @@ const Wrapper = styled.div`
 
   display: flex;
   align-items: center;
+
+  background: rgba(0, 0, 0, 0.02);
 `
 
 const Icon = styled.div`
@@ -39,5 +41,9 @@ const Icon = styled.div`
 `
 
 const Input = styled.input`
+  margin-left: 10px;
+
   background: none;
+  border: none;
+  outline: none;
 `

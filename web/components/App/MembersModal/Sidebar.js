@@ -6,8 +6,13 @@ import styled from 'styled-components'
 import SearchBar from './SearchBar'
 
 type Props = {}
-
-export default class Sidebar extends Component<Props> {
+type State = {
+  inputValue: string,
+}
+export default class Sidebar extends Component<Props, State> {
+  state = {
+    inputValue: '',
+  }
   render() {
     return (
       <div>

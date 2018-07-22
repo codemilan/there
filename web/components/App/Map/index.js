@@ -8,7 +8,7 @@ import { cities } from './citiesList'
 
 // Local
 import { Wrapper, MapImage, MapOverlays, Point } from './styles'
-import PhotoOnMap from '../Person/PhotoOnMap'
+import MemberPhoto from '../Person/MemberPhoto'
 import PeopleGroup from '../Person/PeopleGroup'
 import LayOutItems from './LayOutItems'
 
@@ -38,7 +38,7 @@ export default class Map extends Component<Props> {
                   size={sizeKey}
                 >
                   {group.items.map((item, itemIndex) => (
-                    <PhotoOnMap
+                    <MemberPhoto
                       key={itemIndex}
                       size={sizeKey}
                       photoSrcSet={item.photoSrcSet}

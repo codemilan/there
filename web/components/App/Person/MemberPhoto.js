@@ -22,7 +22,7 @@ type Props = {
   onClick: () => void,
 }
 
-const PhotoOnMap = (props: Props) => {
+const MemberPhoto = (props: Props) => {
   const { status, size: sizeName, photoSrcSet, onClick } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
@@ -42,13 +42,7 @@ const PhotoOnMap = (props: Props) => {
   )
 }
 
-PhotoOnMap.defaultProps = {
-  status: 'focus',
-  size: 'tiny',
-  photoSrcSet: ['/static/profiles/Guillermo_Rauch.jpg'],
-}
-
-export default PhotoOnMap
+export default MemberPhoto
 
 // Styles
 const CircleWrapper = styled.div`

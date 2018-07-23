@@ -2,9 +2,7 @@
 import React, { Component } from 'react'
 
 // Utils
-import { CENTER } from './helpers'
 import { people } from './peopleList'
-import { cities } from './citiesList'
 
 // Local
 import { Wrapper, MapImage, MapOverlays, Point } from './styles'

@@ -4,6 +4,7 @@
   "dependencies": {
     "downshift": "2.0.10",
     "fast-memoize": "2.4.0",
+    "flow-bin": "0.77.0",
     "memoize-one": "3.1.1",
     "moment-timezone": "0.5.20",
     "ms": "2.1.1",

@@ -1,4 +1,5 @@
 [ignore]
+.*/build.*
 .*/*.test.js
 .*/node_modules/config-chain/.*
 
@@ -21,4 +22,4 @@ unclear-type=warn
 unsafe-getters-setters=error
 
 [version]
-0.76.0
+0.77.0

@@ -1,6 +1,7 @@
 {
   "regions": ["sfo1"],
   "env": {
-    "SENTRY_DSN_SERVER": "@there2-sentry-dsn-server"
+    "SENTRY_DSN_SERVER": "@there2-sentry-dsn-server",
+    "TWIST_TEST_TOKEN": "@there2-twist-test-token"
   }
 }

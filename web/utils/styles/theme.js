@@ -1,44 +1,5 @@
 // @flow
-export type Theme = {
-  primary: string,
-  primaryLight1: string,
-  primaryDark1: string,
-  primaryDark2: string,
-  gray: string,
-  grayLight2: string,
-  grayLight1: string,
-  grayDark1: string,
-  grayDark2: string,
-  grayDark3: string,
-  green: string,
-  teal: string,
-  tealDark1: string,
-  yellow: string,
-  orange: string,
-  orangeDark1: string,
-  pink: string,
-
-  containerWidth: number,
-  radius: number,
-  radiusSmall: number,
-  radiusBig: number,
-  fontTiny115: number,
-  fontSmall13: number,
-  fontMedium14: number,
-  fontMedium15: number,
-  fontDefault16: number,
-  fontLarge18: number,
-  fontSystem: string,
-  fontText: string,
-  fontTitle: string,
-  ZIndexNav: number,
-  ZIndexPopovers: number,
-  ZIndexModals: number,
-}
-
-export type ThemedProps = { theme: Theme }
-
-const theme: Theme = {
+const theme = {
   // Global Colors
   primary: '#5BCEFF',
   primaryLight1: '#8BE3FF',
@@ -83,3 +44,6 @@ const theme: Theme = {
 }
 
 export default theme
+
+export type Theme = typeof theme
+export type ThemedProps = { theme: Theme }

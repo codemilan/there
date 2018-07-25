@@ -49,7 +49,7 @@ type WorkspaceMember {
   workspace: Workspace! @relation(name: "WorkspaceMemeber")
   user: User!
   groups: [Group!]!
-  permissionRole: PermissionTags! @default(value: MEMBER)
+  permissionRole: PermissionTags! @default(value: "MEMBER")
   createdAt: DateTime!
   updatedAt: DateTime!
 }

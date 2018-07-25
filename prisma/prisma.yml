@@ -1,7 +1,9 @@
-#endpoint: http://localhost:4466
-endpoint: https://us1.prisma.sh/mo/there/dev
+endpoint: ${env:PRISMA_ENDPOINT}
+secret: ${env:PRISMA_SECRET}
+
 datamodel: datamodel.graphql
 
-hooks:
+hooks:  
   post-deploy:
     - yarn graphql get-schema -p prisma
+    - yarn graphql codegen

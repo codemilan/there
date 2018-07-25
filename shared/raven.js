@@ -14,7 +14,7 @@ if (
     name: process.env.DIR,
   }).install()
 } else {
-  const noop = () => {}
+  const noop: Function = () => {}
   debug('mocking Raven in development')
   // Mock the Raven API in development
   Raven = {

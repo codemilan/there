@@ -118,8 +118,8 @@ const MemberGroup = styled.div`
 const MembersTitle = styled.div`
   padding: 6px ${leftGap}px;
   font-weight: 400;
-  font-size: 11.5px;
-  letter-spacing: 0.03em;
+  font-size: ${p => p.theme.fontTiny115}px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 
   color: #97a5aa;

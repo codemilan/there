@@ -37,6 +37,7 @@ export default class Map extends Component<Props> {
                 >
                   {group.items.map((item, itemIndex) => (
                     <MemberPhoto
+                      clickable={true}
                       key={itemIndex}
                       size={sizeKey}
                       photoSrcSet={item.photoSrcSet}

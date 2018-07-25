@@ -27,7 +27,7 @@ export default class MemberDetails extends Component<Props> {
           </Cell>
           <Cell centerV>
             <div>
-              <DispayName>Alex Muench</DispayName>
+              <DisplayName>Alex Muench</DisplayName>
               <Status>(Focus Mode!)</Status>
               <LocationDetails>
                 <span role="img" aria-label="Sparkles">
@@ -87,7 +87,7 @@ export default class MemberDetails extends Component<Props> {
 }
 
 const Wrapper = styled.div`
-  width: 400px;
+  max-width: 400px;
 `
 
 const DetailsGrid = styled.div`
@@ -115,7 +115,7 @@ const Cell = styled.div`
     `};
 `
 
-const DispayName = styled.div`
+const DisplayName = styled.div`
   display: inline-block;
   padding-right: 5px;
 

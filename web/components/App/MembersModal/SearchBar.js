@@ -11,7 +11,7 @@ type Props = {}
 const SearchBar = ({ ...props }: Props) => (
   <Wrapper>
     <Icon>
-      <SearchIcon />
+      <SearchIcon color="#97a5aa" />
     </Icon>
     <Input {...props} />
   </Wrapper>
@@ -37,6 +37,10 @@ const Icon = styled.div`
   svg {
     display: inline-block;
     stroke: ${(p: ThemedProps) => p.theme.grayDark2};
+
+    path {
+      stroke: ${(p: ThemedProps) => p.theme.grayDark2};
+    }
   }
 `
 
@@ -46,4 +50,9 @@ const Input = styled.input`
   background: none;
   border: none;
   outline: none;
+
+  ::placeholder {
+    color: #97a5aa;
+    font-weight: 300;
+  }
 `

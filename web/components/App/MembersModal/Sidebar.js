@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Local
 import SearchBar from './SearchBar'
@@ -27,8 +27,9 @@ export default class Sidebar extends Component<Props, State> {
         <MemberGroup>
           <MembersTitle>Product Design</MembersTitle>
           <MembersList>
-            <MemberItem>
+            <MemberItem selected>
               <MemberPhoto
+                clickable={false}
                 size="small"
                 photoSrcSet={['/static/profiles/Alex.jpg']}
                 status="working"
@@ -46,6 +47,7 @@ export default class Sidebar extends Component<Props, State> {
             </MemberItem>
             <MemberItem>
               <MemberPhoto
+                clickable={false}
                 size="small"
                 photoSrcSet={['/static/profiles/Alex.jpg']}
                 status="working"
@@ -63,6 +65,7 @@ export default class Sidebar extends Component<Props, State> {
           <MembersList>
             <MemberItem>
               <MemberPhoto
+                clickable={false}
                 size="small"
                 photoSrcSet={['/static/profiles/Alex.jpg']}
                 status="working"
@@ -80,6 +83,7 @@ export default class Sidebar extends Component<Props, State> {
             </MemberItem>
             <MemberItem>
               <MemberPhoto
+                clickable={false}
                 size="small"
                 photoSrcSet={['/static/profiles/Alex.jpg']}
                 status="working"
@@ -128,7 +132,7 @@ const MemberDisplayName = styled.div`
   font-size: 15px;
   letter-spacing: 0.01em;
 
-  color: #000000;
+  color: black;
 `
 
 const MemberStatus = styled.div`
@@ -142,19 +146,28 @@ const MemberStatus = styled.div`
 const MemberItem = styled.div`
   display: grid;
   grid-template-columns: 50px 1fr;
-
   padding: 6px ${leftGap}px;
+
   cursor: pointer;
 
-  &:hover {
-    background: #0897ff;
+  ${p =>
+    p.selected
+      ? css`
+          background: #0897ff;
 
-    ${MemberDisplayName} {
-      color: #fff;
-    }
+          ${MemberDisplayName} {
+            color: #fff;
+          }
 
-    ${MemberStatus} {
-      color: #fff;
-    }
-  }
+          ${MemberStatus} {
+            color: #fff;
+          }
+        `
+      : css`
+          transition: background 150ms ease;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.04);
+          }
+        `};
 `

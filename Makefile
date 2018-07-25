@@ -41,6 +41,11 @@ build:
 # db-reset:
 # 	@docker-compose run --rm api yarn db:reset
 
+.PHONY: prisma-deploy
+prisma-deploy:
+	@docker-compose run --rm api yarn prisma deploy
+
+
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
 # -----------------------------------------------------------------------------

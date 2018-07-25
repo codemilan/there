@@ -1,0 +1,9 @@
+# import Query.* from './modules/user/types.graphql'
+
+type Query {
+  dummy: String
+}
+
+type Mutation {
+  dummy: String
+}

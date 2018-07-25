@@ -1,0 +1,6 @@
+# import User from '../../../prisma/generated.graphql'
+
+type Query {
+  currentUser: String
+  users: [User]
+}

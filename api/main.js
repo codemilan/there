@@ -1,55 +1,55 @@
 // @flow
-import { ApolloServer, gql } from 'apollo-server'
+/**
+ * The entry point for the server, this is where everything starts
+ */
+const debug = require('debug')('api')
+debug('Server starting...')
+debug('logging with debug enabled!')
+import express from 'express'
+import compression from 'compression'
+
+// Local
+import Raven from 'shared/Raven'
+import { applyGraphQlMiddleware } from './graphql'
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001
 
-// This is a (sample) collection of books we'll be able to query
-// the GraphQL server for.  A more complete example might fetch
-// from an existing data source like a REST API or database.
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-]
+// API server
+const app = express()
 
-// Type definitions define the "shape" of your data and specify
-// which ways the data can be fetched from the GraphQL server.
-const typeDefs = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
+// Trust the now proxy
+app.set('trust proxy', true)
 
-  # This "Book" type can be used in other type declarations.
-  type Book {
-    title: String
-    author: String
+// Send all responses as gzip
+app.use(compression())
+
+// Connect the express app to Apollo GraphQL server
+applyGraphQlMiddleware({ app })
+
+// Start Express server
+app.listen(PORT)
+debug(`🚀  API Server started running at http://localhost:${PORT}/`)
+
+// Handle unexpected errors
+// From https://github.com/withspectrum/spectrum
+process.on('unhandledRejection', async err => {
+  console.error('Unhandled rejection', err)
+  try {
+    await new Promise(resolve => Raven.captureException(err, resolve))
+  } catch (err) {
+    console.error('Raven error', err)
+  } finally {
+    process.exit(1)
   }
+})
 
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
-  type Query {
-    books: [Book]
+process.on('uncaughtException', async err => {
+  console.error('Uncaught exception', err)
+  try {
+    await new Promise(resolve => Raven.captureException(err, resolve))
+  } catch (err) {
+    console.error('Raven error', err)
+  } finally {
+    process.exit(1)
   }
-`
-
-// Resolvers define the technique for fetching the types in the
-// schema.  We'll retrieve books from the "books" array above.
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-}
-
-// In the most basic sense, the ApolloServer can be started
-// by passing type definitions (typeDefs) and the resolvers
-// responsible for fetching the data for those types.
-const server = new ApolloServer({ typeDefs, resolvers })
-
-// This `listen` method launches a web-server.  Existing apps
-// can utilize middleware options, which we'll discuss later.
-server.listen(PORT).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
 })

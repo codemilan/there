@@ -1,6 +1,8 @@
 [ignore]
+.*/build.*
 .*/*.test.js
 .*/node_modules/config-chain/.*
+.*/node_modules/graphql
 
 [include]
 
@@ -21,4 +23,4 @@ unclear-type=warn
 unsafe-getters-setters=error
 
 [version]
-0.76.0
+0.77.0

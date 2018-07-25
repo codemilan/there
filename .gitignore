@@ -5,6 +5,7 @@ package-lock.json
 .vscode
 .DS_Store
 .env
+.env*
 
 # Now
 now-secrets.json

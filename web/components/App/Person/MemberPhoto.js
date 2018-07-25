@@ -43,7 +43,7 @@ const MemberPhoto = (props: Props) => {
       borderWidth={borderWidth}
       onClick={onClick}
     >
-      <CircleWrapper status={status}>
+      <CircleWrapper clickable={clickable} status={status}>
         <Photo srcSet={photoSrcSet} />
       </CircleWrapper>
     </Wrapper>
@@ -62,9 +62,11 @@ const CircleWrapper = styled.div`
   overflow: hidden;
 
   border-radius: 50%;
-  box-shadow: var(--white-gap-shadow), var(--border-shadow),
-    0 3px 10px 2px rgba(0, 0, 0, 0.1);
   transition: box-shadow 120ms ease, transform 120ms ease, filter 150ms ease;
+
+  box-shadow: var(--white-gap-shadow),
+    var(--border-shadow)
+      ${p => (p.clickable ? `, 0 3px 10px 2px rgba(0, 0, 0, 0.1);` : ``)};
 `
 
 const Wrapper = styled.div`
@@ -82,18 +84,17 @@ const Wrapper = styled.div`
   border-radius: 50%;
 
   ${p =>
-    p.clickable
-      ? css`
-          cursor: pointer;
+    p.clickable &&
+    css`
+      cursor: pointer;
 
-          &:hover ${CircleWrapper} {
-            box-shadow: var(--white-gap-shadow), var(--border-shadow),
-              0 4px 12px 3px rgba(0, 0, 0, 0.1);
-            transform: scale(1.1);
-            filter: contrast(1.01) brightness(1.05);
-          }
-        `
-      : css``};
+      &:hover ${CircleWrapper} {
+        box-shadow: var(--white-gap-shadow), var(--border-shadow),
+          0 4px 12px 3px rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
+        filter: contrast(1.01) brightness(1.05);
+      }
+    `};
 `
 
 const Photo = styled(RetinaImage)`

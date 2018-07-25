@@ -19,23 +19,29 @@ type Props = {
   photoSrcSet: string[],
   status: MemberStatus,
   size: OnMapPhotoSize,
-  clickable: boolean,
+  clickable?: boolean,
   onClick: () => void,
 }
 
 const MemberPhoto = (props: Props) => {
-  const { status, size: sizeName, photoSrcSet, onClick, clickable } = props
+  const {
+    status,
+    size: sizeName,
+    photoSrcSet,
+    onClick,
+    clickable = false,
+  } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
   const size = photoSizesMap[sizeName]
 
   return (
     <Wrapper
+      clickable={clickable}
       size={size}
       whiteGap={whiteGap}
       borderWidth={borderWidth}
       onClick={onClick}
-      clickable={clickable == undefined ? true : clickable}
     >
       <CircleWrapper status={status}>
         <Photo srcSet={photoSrcSet} />

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Utils
 import {
@@ -19,11 +19,12 @@ type Props = {
   photoSrcSet: string[],
   status: MemberStatus,
   size: OnMapPhotoSize,
+  clickable: boolean,
   onClick: () => void,
 }
 
 const MemberPhoto = (props: Props) => {
-  const { status, size: sizeName, photoSrcSet, onClick } = props
+  const { status, size: sizeName, photoSrcSet, onClick, clickable } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
   const size = photoSizesMap[sizeName]
@@ -34,6 +35,7 @@ const MemberPhoto = (props: Props) => {
       whiteGap={whiteGap}
       borderWidth={borderWidth}
       onClick={onClick}
+      clickable={clickable == undefined ? true : clickable}
     >
       <CircleWrapper status={status}>
         <Photo srcSet={photoSrcSet} />
@@ -53,7 +55,6 @@ const CircleWrapper = styled.div`
   height: var(--size);
   overflow: hidden;
 
-  cursor: pointer;
   border-radius: 50%;
   box-shadow: var(--white-gap-shadow), var(--border-shadow),
     0 3px 10px 2px rgba(0, 0, 0, 0.1);
@@ -73,14 +74,20 @@ const Wrapper = styled.div`
 
   /* Hover styles, cause we need to cover box-shadow */
   border-radius: 50%;
-  cursor: pointer;
 
-  &:hover ${CircleWrapper} {
-    box-shadow: var(--white-gap-shadow), var(--border-shadow),
-      0 4px 12px 3px rgba(0, 0, 0, 0.1);
-    transform: scale(1.1);
-    filter: contrast(1.01) brightness(1.05);
-  }
+  ${p =>
+    p.clickable
+      ? css`
+          cursor: pointer;
+
+          &:hover ${CircleWrapper} {
+            box-shadow: var(--white-gap-shadow), var(--border-shadow),
+              0 4px 12px 3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
+            filter: contrast(1.01) brightness(1.05);
+          }
+        `
+      : css``};
 `
 
 const Photo = styled(RetinaImage)`

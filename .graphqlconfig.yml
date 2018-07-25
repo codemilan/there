@@ -1,12 +1,17 @@
 projects:
 
-  api:
+  app:
     schemaPath: api/schema.graphql
     extensions:
       endpoints:
-        default: http://localhost:3001
+        default: http://localhost:3001/graphql
 
   prisma:
     schemaPath: prisma/generated.graphql
     extensions:
       prisma: prisma/prisma.yml
+      codegen:
+      - generator: prisma-binding
+        language: flow
+        output:
+          binding: prisma/generated.js

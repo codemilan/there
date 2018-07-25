@@ -14,7 +14,7 @@ type Props = {
 }
 
 const MemebersModal = ({ selectedMemberId, ...props }: Props) => (
-  <Modal width={750} height={450} {...props}>
+  <Modal width={760} height={600} {...props}>
     <Stack>
       <SidebarWrapper>
         <Sidebar />

@@ -1,6 +1,11 @@
+// @flow
+import React from 'react'
 import styled from 'styled-components'
 
-export const InlineButton = props => <InlineButtonWrapper {...props} />
+// Local
+export { PrimaryButton } from './PrimaryButton'
+
+export const InlineButton = (props: any) => <InlineButtonWrapper {...props} />
 
 // Styles
 const InlineButtonWrapper = styled.button`

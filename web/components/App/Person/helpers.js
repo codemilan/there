@@ -7,13 +7,6 @@ export const personStatus = {
   NOT_DISTURB: 'not-disturb',
 }
 
-const allPersonStatuses = [
-  personStatus.WORK,
-  personStatus.SLEEP,
-  personStatus.FOCUS,
-  personStatus.NOT_DISTURB,
-]
-
 // Colors
 export const mapStatusToColor = {
   // $FlowFixMe

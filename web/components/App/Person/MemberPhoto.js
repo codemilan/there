@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Utils
 import {
@@ -19,36 +19,38 @@ type Props = {
   photoSrcSet: string[],
   status: MemberStatus,
   size: OnMapPhotoSize,
+  clickable?: boolean,
   onClick: () => void,
 }
 
-const PhotoOnMap = (props: Props) => {
-  const { status, size: sizeName, photoSrcSet, onClick } = props
+const MemberPhoto = (props: Props) => {
+  const {
+    status,
+    size: sizeName,
+    photoSrcSet,
+    onClick,
+    clickable = false,
+  } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
   const size = photoSizesMap[sizeName]
 
   return (
     <Wrapper
+      clickable={clickable}
       size={size}
       whiteGap={whiteGap}
       borderWidth={borderWidth}
       onClick={onClick}
     >
-      <CircleWrapper status={status}>
+      <CircleWrapper clickable={clickable} status={status}>
         <Photo srcSet={photoSrcSet} />
       </CircleWrapper>
     </Wrapper>
   )
 }
 
-PhotoOnMap.defaultProps = {
-  status: 'focus',
-  size: 'tiny',
-  photoSrcSet: ['/static/profiles/Guillermo_Rauch.jpg'],
-}
-
-export default PhotoOnMap
+export default MemberPhoto
 
 // Styles
 const CircleWrapper = styled.div`
@@ -59,11 +61,12 @@ const CircleWrapper = styled.div`
   height: var(--size);
   overflow: hidden;
 
-  cursor: pointer;
   border-radius: 50%;
-  box-shadow: var(--white-gap-shadow), var(--border-shadow),
-    0 3px 10px 2px rgba(0, 0, 0, 0.1);
   transition: box-shadow 120ms ease, transform 120ms ease, filter 150ms ease;
+
+  box-shadow: var(--white-gap-shadow),
+    var(--border-shadow)
+      ${p => (p.clickable ? `, 0 3px 10px 2px rgba(0, 0, 0, 0.1);` : ``)};
 `
 
 const Wrapper = styled.div`
@@ -79,14 +82,19 @@ const Wrapper = styled.div`
 
   /* Hover styles, cause we need to cover box-shadow */
   border-radius: 50%;
-  cursor: pointer;
 
-  &:hover ${CircleWrapper} {
-    box-shadow: var(--white-gap-shadow), var(--border-shadow),
-      0 4px 12px 3px rgba(0, 0, 0, 0.1);
-    transform: scale(1.1);
-    filter: contrast(1.01) brightness(1.05);
-  }
+  ${p =>
+    p.clickable &&
+    css`
+      cursor: pointer;
+
+      &:hover ${CircleWrapper} {
+        box-shadow: var(--white-gap-shadow), var(--border-shadow),
+          0 4px 12px 3px rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
+        filter: contrast(1.01) brightness(1.05);
+      }
+    `};
 `
 
 const Photo = styled(RetinaImage)`

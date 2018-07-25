@@ -2,6 +2,8 @@
   "regions": ["sfo1"],
   "env": {
     "SENTRY_DSN_SERVER": "@there2-sentry-dsn-server",
-    "TWIST_TEST_TOKEN": "@there2-twist-test-token"
+    "TWIST_TEST_TOKEN": "@there2-twist-test-token",
+    "PRISMA_SECRET": "@there2-prisma-secret",
+    "PRISMA_ENDPOINT": "@there2-prisma-endpoint"
   }
 }

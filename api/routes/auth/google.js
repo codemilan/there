@@ -6,6 +6,7 @@ const googleAuthRouter = Router()
 const { main, callbacks } = createSigninRoutes('google', {
   scope: [
     'https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/calendar',
     'https://www.googleapis.com/auth/plus.profile.emails.read',
   ],
 })

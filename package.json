@@ -56,7 +56,7 @@
   },
   "scripts": {
     "dev:web": "cd web && yarn dev",
-    "dev:api": "cross-env NODE_PATH=./ cross-env NODE_ENV=development cross-env DEBUG=api* cross-env DIR=api nodemon --ext js,graphql,json --exec \"flow-node\" api/index.js",
+    "dev:api": "cross-env NODE_PATH=./ cross-env NODE_ENV=development cross-env DEBUG=api*,shared:middlewares* cross-env DIR=api nodemon --ext js,graphql,json --exec \"flow-node\" api/index.js",
     "build:web": "cd web && yarn build",
     "prebuild:api": "rimraf build-api",
     "build:api": "cross-env NODE_PATH=./ cross-env NODE_ENV=production cross-env DIR=api flow-remove-types api/ --out-dir build-api/",

@@ -18,7 +18,7 @@ const AccountDropdown = ({ isOpen = false }) => (
       />
     </Link>
 
-    <Link href="/teams/zeit" passHref>
+    <Link href="/app/team/setting" passHref>
       <AccountItem name="Zeit" photoUrl="/static/profiles/zeit.png" />
     </Link>
 

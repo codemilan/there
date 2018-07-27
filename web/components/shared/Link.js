@@ -1,17 +1,18 @@
+// @flow
 import NextLink from 'next/link'
-import React, { PureComponent } from 'react'
+import * as React from 'react'
 import { withRouter } from 'next/router'
-import { any, node, bool, string } from 'prop-types'
 
-class LinkWithoutRouter extends PureComponent {
-  static propTypes = {
-    router: any,
-    children: node,
-    passActive: bool,
-    passHref: bool,
-    href: string,
-  }
+type Props = {
+  router: { pathname: string },
+  children: React.ReactNode,
+  exact?: boolean,
+  passActive?: boolean,
+  passHref?: boolean,
+  href: string,
+}
 
+class LinkWithoutRouter extends React.PureComponent<Props> {
   render() {
     const {
       children: childrenFromProps,
@@ -47,7 +48,7 @@ class LinkWithoutRouter extends PureComponent {
 
   isActive = href =>
     this.props.router.pathname === href ||
-    this.props.router.pathname.includes(`${href}/`)
+    (!this.props.exact && this.props.router.pathname.includes(`${href}/`))
 }
 
 export const Link = withRouter(LinkWithoutRouter)

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 // Local
+import { Link } from '../shared/Link'
 import { Container } from '../shared/Container'
 import Select from '../shared/Select'
 
@@ -11,9 +12,15 @@ const SubNav = ({ settingNav = false, ...props }) => (
         <Select />
       ) : (
         <SettingNav>
-          <Item href="/">Settings</Item>
-          <Item href="/">Members</Item>
-          <Item href="/">Billing</Item>
+          <Link href="/app/team/setting" passHref passActive>
+            <Item>Settings</Item>
+          </Link>
+          <Link href="/app/team/members" passHref passActive>
+            <Item>Members</Item>
+          </Link>
+          <Link href="/app/team/billing" passHref passActive>
+            <Item>Billing</Item>
+          </Link>
         </SettingNav>
       )}
     </FlexContainer>
@@ -49,5 +56,5 @@ const Item = styled.a`
   font-size: 15px;
   text-decoration: none;
 
-  color: #97a5aa;
+  color: ${p => (p.active ? 'black' : p.theme.grayDark2)};
 `

@@ -152,8 +152,8 @@ const PoppingDialog = posed(Dialog)({
     transition: props => ({
       ...props,
       type: 'tween',
-      ease: 'easeIn',
-      duration: 140,
+      ease: 'easeInOut',
+      duration: 120,
     }),
   },
   exit: {
@@ -163,7 +163,7 @@ const PoppingDialog = posed(Dialog)({
       ...props,
       type: 'tween',
       ease: 'easeOut',
-      duration: 140,
+      duration: 120,
     }),
   },
 })

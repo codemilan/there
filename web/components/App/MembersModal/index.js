@@ -45,7 +45,7 @@ const Stack = styled.div`
 `
 
 const SidebarWrapper = styled.div`
-  background: ${p => p.theme.grayLight1};
+  background: ${p => p.theme.grayLight2};
 `
 
 const DetailsWrapper = styled.div`

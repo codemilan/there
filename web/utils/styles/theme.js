@@ -31,6 +31,7 @@ const theme = {
   fontMedium15: 15,
   fontDefault16: 16,
   fontLarge18: 18,
+  fontLarge20: 20,
 
   // Fonts
   fontSystem: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`,

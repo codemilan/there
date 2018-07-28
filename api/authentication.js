@@ -4,6 +4,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 
 // Local
 import db from './db'
+import { createOrFindUser } from './modules/user/model'
 
 const IS_PROD = !process.env.FORCE_DEV && process.env.NODE_ENV === 'production'
 
@@ -44,9 +45,51 @@ const init = () => {
           ? 'https://v2.api.there.pm/auth/google/callback'
           : 'http://localhost:3001/auth/google/callback',
       },
-      (accessToken, refreshToken, profile, cb) => {
-        // TODO: Actual auth, currently it's a mock
-        return cb(null, { id: 'xsacdeadejewkqndj' })
+      (accessToken, refreshToken, profile, done) => {
+        // 1.
+        // Build a user object
+        const name =
+          profile.displayName || profile.name
+            ? `${profile.name.givenName} ${profile.name.familyName}`
+            : ''
+        const profilePhoto =
+          (profile.photos &&
+            profile.photos.length > 0 &&
+            profile.photos[0].value) ||
+          null
+        const user = {
+          pendingSetup: false,
+          googleProviderId: profile.id,
+          name,
+          firstName:
+            profile.name && profile.name.givenName
+              ? profile.name.givenName
+              : '',
+          lastName:
+            profile.name && profile.name.familyName
+              ? profile.name.familyName
+              : '',
+          email:
+            (profile.emails &&
+              profile.emails.length > 0 &&
+              profile.emails[0].value) ||
+            null,
+          profilePhoto: profilePhoto
+            ? profilePhoto.replace('?sz=50', '?sz=120')
+            : null,
+          profession: profile.tagline ? profile.tagline : '',
+          lastSeen: new Date(),
+        }
+
+        return createOrFindUser(user, 'googleProviderId')
+          .then(user => {
+            done(null, user)
+            return user
+          })
+          .catch(err => {
+            done(err)
+            return null
+          })
       },
     ),
   )

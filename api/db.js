@@ -6,7 +6,7 @@ import { Prisma } from 'prisma-binding'
 // Local
 import type { Query, Mutation, Subscription, Exists } from 'prisma/generated'
 
-const IS_PROD = process.env.NODE_ENV === 'development'
+const IS_PROD = process.env.NODE_ENV === 'production'
 
 export interface Db {
   query: Query;

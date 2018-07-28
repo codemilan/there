@@ -36,11 +36,11 @@ services:
       - there
 
   prisma:
-    image: prismagraphql/prisma:1.11
+    image: prismagraphql/prisma:1.12
     restart: always
     ports:
       - 4466:4466
-    env_file: 
+    env_file:
       - .env
     environment:
       PRISMA_SECRET:

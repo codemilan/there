@@ -919,12 +919,13 @@ type User implements Node {
   id: ID!
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -958,12 +959,13 @@ input UserCreatedaysOffInput {
 input UserCreateInput {
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -1001,12 +1003,13 @@ input UserCreateOneWithoutWorkHoursInput {
 input UserCreateWithoutMemberOfInput {
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -1023,12 +1026,13 @@ input UserCreateWithoutMemberOfInput {
 input UserCreateWithoutVacationsInput {
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -1045,12 +1049,13 @@ input UserCreateWithoutVacationsInput {
 input UserCreateWithoutWorkHoursInput {
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -1080,6 +1085,8 @@ enum UserOrderByInput {
   name_DESC
   firstName_ASC
   firstName_DESC
+  lastName_ASC
+  lastName_DESC
   profilePhoto_ASC
   profilePhoto_DESC
   email_ASC
@@ -1118,12 +1125,13 @@ type UserPreviousValues {
   id: ID!
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String!
   username: String
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -1179,6 +1187,7 @@ input UserSubscriptionWhereInput {
 input UserUpdateDataInput {
   name: String
   firstName: String
+  lastName: String
   profilePhoto: String
   email: String
   username: String
@@ -1206,6 +1215,7 @@ input UserUpdatedaysOffInput {
 input UserUpdateInput {
   name: String
   firstName: String
+  lastName: String
   profilePhoto: String
   email: String
   username: String
@@ -1261,6 +1271,7 @@ input UserUpdateOneWithoutWorkHoursInput {
 input UserUpdateWithoutMemberOfDataInput {
   name: String
   firstName: String
+  lastName: String
   profilePhoto: String
   email: String
   username: String
@@ -1283,6 +1294,7 @@ input UserUpdateWithoutMemberOfDataInput {
 input UserUpdateWithoutVacationsDataInput {
   name: String
   firstName: String
+  lastName: String
   profilePhoto: String
   email: String
   username: String
@@ -1305,6 +1317,7 @@ input UserUpdateWithoutVacationsDataInput {
 input UserUpdateWithoutWorkHoursDataInput {
   name: String
   firstName: String
+  lastName: String
   profilePhoto: String
   email: String
   username: String
@@ -1896,6 +1909,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   firstName_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
   profilePhoto: String
 
   """All values that are not equal to given value."""
@@ -2399,14 +2452,13 @@ input UserWhereInput {
   vacations_some: UserVacationWhereInput
   vacations_none: UserVacationWhereInput
   workHours: UserWorkHoursWhereInput
-  _MagicalBackRelation_UserToWorkspace_every: WorkspaceWhereInput
-  _MagicalBackRelation_UserToWorkspace_some: WorkspaceWhereInput
-  _MagicalBackRelation_UserToWorkspace_none: WorkspaceWhereInput
 }
 
 input UserWhereUniqueInput {
   id: ID
   email: String
+  username: String
+  googleProviderId: String
 }
 
 type UserWorkHours implements Node {
@@ -4173,9 +4225,6 @@ input WorkspaceWhereInput {
   members_some: WorkspaceMemberWhereInput
   members_none: WorkspaceMemberWhereInput
   creator: UserWhereInput
-  _MagicalBackRelation_GroupToWorkspace_every: GroupWhereInput
-  _MagicalBackRelation_GroupToWorkspace_some: GroupWhereInput
-  _MagicalBackRelation_GroupToWorkspace_none: GroupWhereInput
 }
 
 input WorkspaceWhereUniqueInput {
@@ -4296,6 +4345,8 @@ export type UserOrderByInput =
   | 'name_DESC'
   | 'firstName_ASC'
   | 'firstName_DESC'
+  | 'lastName_ASC'
+  | 'lastName_DESC'
   | 'profilePhoto_ASC'
   | 'profilePhoto_DESC'
   | 'email_ASC'
@@ -4390,12 +4441,13 @@ export type WorkspaceMemberWhereInput = {|
 export type UserCreateWithoutWorkHoursInput = {|
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,
@@ -4706,6 +4758,20 @@ export type UserWhereInput = {|
   firstName_not_starts_with?: String,
   firstName_ends_with?: String,
   firstName_not_ends_with?: String,
+  lastName?: String,
+  lastName_not?: String,
+  lastName_in?: Array<String> | String,
+  lastName_not_in?: Array<String> | String,
+  lastName_lt?: String,
+  lastName_lte?: String,
+  lastName_gt?: String,
+  lastName_gte?: String,
+  lastName_contains?: String,
+  lastName_not_contains?: String,
+  lastName_starts_with?: String,
+  lastName_not_starts_with?: String,
+  lastName_ends_with?: String,
+  lastName_not_ends_with?: String,
   profilePhoto?: String,
   profilePhoto_not?: String,
   profilePhoto_in?: Array<String> | String,
@@ -4889,9 +4955,6 @@ export type UserWhereInput = {|
   vacations_some?: UserVacationWhereInput,
   vacations_none?: UserVacationWhereInput,
   workHours?: UserWorkHoursWhereInput,
-  _MagicalBackRelation_UserToWorkspace_every?: WorkspaceWhereInput,
-  _MagicalBackRelation_UserToWorkspace_some?: WorkspaceWhereInput,
-  _MagicalBackRelation_UserToWorkspace_none?: WorkspaceWhereInput,
 |}
 
 export type UserCreateOneWithoutMemberOfInput = {|
@@ -4902,6 +4965,7 @@ export type UserCreateOneWithoutMemberOfInput = {|
 export type UserUpdateInput = {|
   name?: String,
   firstName?: String,
+  lastName?: String,
   profilePhoto?: String,
   email?: String,
   username?: String,
@@ -4925,12 +4989,13 @@ export type UserUpdateInput = {|
 export type UserCreateWithoutMemberOfInput = {|
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,
@@ -5040,9 +5105,6 @@ export type WorkspaceWhereInput = {|
   members_some?: WorkspaceMemberWhereInput,
   members_none?: WorkspaceMemberWhereInput,
   creator?: UserWhereInput,
-  _MagicalBackRelation_GroupToWorkspace_every?: GroupWhereInput,
-  _MagicalBackRelation_GroupToWorkspace_some?: GroupWhereInput,
-  _MagicalBackRelation_GroupToWorkspace_none?: GroupWhereInput,
 |}
 
 export type UserVacationCreateManyWithoutUserInput = {|
@@ -5076,6 +5138,8 @@ export type UserWorkHoursCreateOneWithoutUserInput = {|
 export type UserWhereUniqueInput = {|
   id?: ID_Input,
   email?: String,
+  username?: String,
+  googleProviderId?: String,
 |}
 
 export type UserWorkHoursCreateWithoutUserInput = {|
@@ -5101,6 +5165,7 @@ export type UserWorkHoursCreateWithoutUserInput = {|
 export type UserUpdateWithoutWorkHoursDataInput = {|
   name?: String,
   firstName?: String,
+  lastName?: String,
   profilePhoto?: String,
   email?: String,
   username?: String,
@@ -5159,6 +5224,7 @@ export type WorkspaceMemberCreateManyWithoutGroupsInput = {|
 export type UserUpdateWithoutVacationsDataInput = {|
   name?: String,
   firstName?: String,
+  lastName?: String,
   profilePhoto?: String,
   email?: String,
   username?: String,
@@ -5233,12 +5299,13 @@ export type WorkspaceMemberUpdateManyWithoutGroupsInput = {|
 export type UserCreateWithoutVacationsInput = {|
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,
@@ -5581,12 +5648,13 @@ export type WorkspaceCreateWithoutMembersInput = {|
 export type UserCreateInput = {|
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,
@@ -5654,6 +5722,7 @@ export type UserWorkHoursSubscriptionWhereInput = {|
 export type UserUpdateDataInput = {|
   name?: String,
   firstName?: String,
+  lastName?: String,
   profilePhoto?: String,
   email?: String,
   username?: String,
@@ -5891,6 +5960,7 @@ export type GroupUpdateInput = {|
 export type UserUpdateWithoutMemberOfDataInput = {|
   name?: String,
   firstName?: String,
+  lastName?: String,
   profilePhoto?: String,
   email?: String,
   username?: String,
@@ -6014,12 +6084,13 @@ export type UserPreviousValues = {|
   id: ID_Output,
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,
@@ -6320,12 +6391,13 @@ export type User = {|
   id: ID_Output,
   name: String,
   firstName: String,
+  lastName: String,
   profilePhoto?: String,
   email: String,
   username?: String,
   contactInfo?: String,
   profession?: String,
-  timezone: String,
+  timezone?: String,
   baseCity?: String,
   baseCountry?: String,
   baseLatitude?: Float,

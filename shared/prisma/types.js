@@ -2452,6 +2452,9 @@ input UserWhereInput {
   vacations_some: UserVacationWhereInput
   vacations_none: UserVacationWhereInput
   workHours: UserWorkHoursWhereInput
+  _MagicalBackRelation_UserToWorkspace_every: WorkspaceWhereInput
+  _MagicalBackRelation_UserToWorkspace_some: WorkspaceWhereInput
+  _MagicalBackRelation_UserToWorkspace_none: WorkspaceWhereInput
 }
 
 input UserWhereUniqueInput {
@@ -4225,6 +4228,9 @@ input WorkspaceWhereInput {
   members_some: WorkspaceMemberWhereInput
   members_none: WorkspaceMemberWhereInput
   creator: UserWhereInput
+  _MagicalBackRelation_GroupToWorkspace_every: GroupWhereInput
+  _MagicalBackRelation_GroupToWorkspace_some: GroupWhereInput
+  _MagicalBackRelation_GroupToWorkspace_none: GroupWhereInput
 }
 
 input WorkspaceWhereUniqueInput {
@@ -4955,6 +4961,9 @@ export type UserWhereInput = {|
   vacations_some?: UserVacationWhereInput,
   vacations_none?: UserVacationWhereInput,
   workHours?: UserWorkHoursWhereInput,
+  _MagicalBackRelation_UserToWorkspace_every?: WorkspaceWhereInput,
+  _MagicalBackRelation_UserToWorkspace_some?: WorkspaceWhereInput,
+  _MagicalBackRelation_UserToWorkspace_none?: WorkspaceWhereInput,
 |}
 
 export type UserCreateOneWithoutMemberOfInput = {|
@@ -5105,6 +5114,9 @@ export type WorkspaceWhereInput = {|
   members_some?: WorkspaceMemberWhereInput,
   members_none?: WorkspaceMemberWhereInput,
   creator?: UserWhereInput,
+  _MagicalBackRelation_GroupToWorkspace_every?: GroupWhereInput,
+  _MagicalBackRelation_GroupToWorkspace_some?: GroupWhereInput,
+  _MagicalBackRelation_GroupToWorkspace_none?: GroupWhereInput,
 |}
 
 export type UserVacationCreateManyWithoutUserInput = {|

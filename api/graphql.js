@@ -7,6 +7,7 @@ import { ApolloServer } from 'apollo-server-express'
 
 // Local
 import resolvers from './modules/resolvers'
+import type { User } from 'shared/prisma/types'
 import db, { type Db } from './db'
 
 const IS_PROD = process.env.NODE_ENV === 'development'
@@ -14,7 +15,7 @@ const IS_PROD = process.env.NODE_ENV === 'development'
 // All GraphQL API type defenitions
 const typeDefs = importSchema(path.resolve(__dirname, './schema.graphql'))
 
-export type GraphQLContext = { db: Db }
+export type GraphQLContext = { db: Db, user: ?User }
 
 export const applyGraphQlMiddleware = (serverRegistration: any) => {
   const server = new ApolloServer({
@@ -23,8 +24,9 @@ export const applyGraphQlMiddleware = (serverRegistration: any) => {
     validationRules: [depthLimit(10)],
     tracing: true,
     engine: IS_PROD ? { apiKey: process.env.APOLLO_ENGINE_API_KEY } : null,
-    context: (): GraphQLContext => ({
+    context: ({ req }): GraphQLContext => ({
       db,
+      user: req.user || null,
     }),
   })
 

@@ -16,4 +16,3 @@
 # TODO: Move this into src directories.
 !/api/*
 !/web/*
-!/prisma/*

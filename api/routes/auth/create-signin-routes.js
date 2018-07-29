@@ -6,7 +6,7 @@
  * const { main, callbacks } = createSigninRoutes('google');
  * googleRouter.get('/', main);
  * googleRouter.get('/callback', ...callbacks);
- * 
+ *
  * -> Taken from withspectrum/spectrum
  */
 import { URL } from 'url'

@@ -7,11 +7,11 @@ projects:
         default: http://localhost:3001/graphql
 
   prisma:
-    schemaPath: prisma/generated.graphql
+    schemaPath: shared/prisma/types.graphql
     extensions:
       prisma: prisma/prisma.yml
       codegen:
       - generator: prisma-binding
         language: flow
         output:
-          binding: prisma/generated.js
+          binding: shared/prisma/types.js

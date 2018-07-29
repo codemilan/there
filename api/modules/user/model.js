@@ -1,7 +1,7 @@
 // @flow
 // Local
 import db from '../../db'
-import type { UserCreateInput, User, ID_Input } from 'prisma/generated'
+import type { UserCreateInput, User, ID_Input } from 'shared/prisma/types'
 
 export const getUserByEmail = (email: string) =>
   db.query.user({ where: { email } })
@@ -19,16 +19,19 @@ export const saveUserProvider = (
     data: { [providerMethodKey]: providerId },
   })
 
+/**
+ * Used for sign in / sign up
+ */
 export const createOrFindUser = async (
   user: Object,
-  providerMethodKey: string,
+  providerMethodKey: ?'googleProviderId',
 ): Promise<User | {}> => {
   // 1.
   // First chek if user is already signed up, by searching for it
   let userPromise: Promise<any> = Promise.resolve({})
   if (user.id) {
     userPromise = db.query.user({ where: { id: user.id } })
-  } else if (user[providerMethodKey]) {
+  } else if (providerMethodKey && user[providerMethodKey]) {
     // User is trying to sign in using Google or another SSO
     userPromise = db.query
       .user({
@@ -58,7 +61,7 @@ export const createOrFindUser = async (
     // if a user is found with an id or email, return the user in the db
     if (storedUser && storedUser.id) {
       // if a user is signing in with a second auth method from what their user was created with, store the new auth method
-      if (!storedUser[providerMethodKey]) {
+      if (!storedUser[providerMethodKey] && providerMethodKey) {
         return saveUserProvider(
           storedUser.id,
           providerMethodKey,

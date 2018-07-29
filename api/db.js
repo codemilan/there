@@ -4,7 +4,7 @@ import path from 'path'
 import { Prisma } from 'prisma-binding'
 
 // Local
-import type { Query, Mutation, Subscription, Exists } from 'prisma/generated'
+import type { Query, Mutation, Subscription, Exists } from 'shared/prisma/types'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
@@ -17,7 +17,7 @@ export interface Db {
 
 const db: Db = new Prisma({
   // Datamodel; It's different from our API `typedefs`
-  typeDefs: path.resolve(__dirname, '../prisma/generated.graphql'),
+  typeDefs: path.resolve(__dirname, '../shared/prisma/types.graphql'),
   endpoint: IS_PROD ? process.env.PRISMA_ENDPOINT : `http://prisma:4466`,
   secret: process.env.PRISMA_SECRET,
   debug: debug.enabled,

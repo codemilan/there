@@ -11,7 +11,6 @@ x-workspace-node-modules-cache: &workspace-node-modules-cache node_modules_cache
 # Volume definitions for common linked packages.
 x-package-api: &package-api ./api:/app/api:delegated
 x-package-web: &package-web ./web:/app/web:delegated
-x-package-prisma: &package-prisma ./prisma:/app/prisma:delegated
 
 volumes:
   node_modules_cache:
@@ -40,8 +39,6 @@ services:
     restart: always
     ports:
       - 4466:4466
-    env_file:
-      - .env
     environment:
       PRISMA_SECRET:
       PRISMA_CONFIG: |
@@ -74,7 +71,6 @@ services:
       - *workspace-node-modules-cache
       - *package-web
       - *package-api
-      - *package-prisma
     ports:
       - "3000:3000"
     networks:
@@ -96,7 +92,6 @@ services:
       - *workspace-node-modules-cache
       - *package-web
       - *package-api
-      - *package-prisma
     environment:
       - TEST_DB=${TEST_DB}
     ports:

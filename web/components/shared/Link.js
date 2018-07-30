@@ -5,7 +5,7 @@ import { withRouter } from 'next/router'
 
 type Props = {
   router: { pathname: string },
-  children: React.ReactNode,
+  children: any,
   exact?: boolean,
   passActive?: boolean,
   passHref?: boolean,
@@ -23,6 +23,7 @@ class LinkWithoutRouter extends React.PureComponent<Props> {
 
     // Filter
     delete props.router
+    delete props.exact
 
     // We want to pass props to children
     let children = childrenFromProps

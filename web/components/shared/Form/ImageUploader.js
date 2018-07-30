@@ -2,7 +2,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ImageUploader = ({ src = false, ...props }) => (
+type Props = {
+  src: boolean,
+}
+
+const ImageUploader = ({ src = false, ...props }: Props) => (
   <Wrapper>
     <ImgWrapper>{src && <img src={src} alt="" />}</ImgWrapper>
   </Wrapper>
@@ -20,10 +24,16 @@ const ImgWrapper = styled.div`
   border: 1px solid #ecf1f3;
   box-sizing: border-box;
   border-radius: 6px;
+  cursor: pointer;
 
   img {
     width: 100%;
     height: 100%;
+    border-radius: 6px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px #f5ecec;
   }
 `
 

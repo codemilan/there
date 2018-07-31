@@ -3,10 +3,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
-  src: boolean,
+  src?: string,
 }
 
-const ImageUploader = ({ src = false, ...props }: Props) => (
+const ImageUploader = ({ src, ...props }: Props) => (
   <Wrapper>
     <ImgWrapper>{src && <img src={src} alt="" />}</ImgWrapper>
   </Wrapper>

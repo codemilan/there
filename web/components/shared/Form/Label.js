@@ -1,12 +1,13 @@
 // @flow
+import React from 'react'
 import styled from 'styled-components'
 
-export const Label = props => <LabelWrapper>{props.children}</LabelWrapper>
+export const Label = (props: any) => <StyledLabel>{props.children}</StyledLabel>
 
-const LabelWrapper = styled.label`
+const StyledLabel = styled.label`
   display: block;
   font-weight: 500;
-  font-size: ${p => p.theme.fontLarge20};
+  font-size: ${p => p.theme.fontLarge20}px;
   letter-spacing: 0.03em;
   margin-bottom: 12px;
 

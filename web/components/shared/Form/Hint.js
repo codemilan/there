@@ -1,8 +1,15 @@
 //@flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
-const Hint = props => <HintWithStyle>{props.children}</HintWithStyle>
+type Prop = {
+  textColor?: string,
+  children?: React.Node,
+}
+
+const Hint = ({ textColor, children }: Prop) => (
+  <HintWithStyle textColor={textColor}>{children}</HintWithStyle>
+)
 
 const HintWithStyle = styled.span`
   display: block;

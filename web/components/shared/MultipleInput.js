@@ -28,7 +28,7 @@ export default class MultipleInput extends Component<Props, State> {
         <Selections>
           {Array.from(selections).map(selection => (
             <Tag key={selection}>
-              <span>{selection}</span>
+              <TagText>{selection}</TagText>
               <Close onClick={() => this.removed(selection)} />
             </Tag>
           ))}
@@ -100,4 +100,8 @@ const Tag = styled.div`
   font-size: 15px;
   letter-spacing: 0.01em;
   color: rgba(67, 83, 92, 0.92);
+`
+
+const TagText = styled.span`
+  margin-right: 3px;
 `

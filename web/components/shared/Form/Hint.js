@@ -1,13 +1,13 @@
-//@flow
+// @flow
 import * as React from 'react'
 import styled from 'styled-components'
 
-type Prop = {
+type Props = {
   textColor?: string,
   children?: React.Node,
 }
 
-const Hint = ({ textColor, children }: Prop) => (
+const Hint = ({ textColor, children }: Props) => (
   <HintWithStyle textColor={textColor}>{children}</HintWithStyle>
 )
 

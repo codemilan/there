@@ -12,12 +12,12 @@ import { Label } from '../../../components/shared/Form/Label'
 import { Input } from '../../../components/shared/Input'
 import MultipleInput from '../../../components/shared/MultipleInput'
 import ImageUploader from '../../../components/shared/Form/ImageUploader'
-import Line from '../../../components/shared/Form/Line'
+import { Line } from '../../../components/shared/Form/Line'
 import Error from '../../../components/shared/Form/Error'
 import Hint from '../../../components/shared/Form/Hint'
 import {
   PrimaryButton,
-  SecondryButton,
+  SecondaryButton,
 } from '../../../components/shared/Buttons/index'
 
 type State = {
@@ -93,14 +93,14 @@ export default class setting extends React.Component<{}, State> {
 
                 <Label>Icon</Label>
                 <ImageUploader src="/static/thereTeam.png" />
-                <SecondryButton>Upload Team Icon</SecondryButton>
+                <SecondaryButton>Upload Team Icon</SecondaryButton>
                 <Line />
 
                 <Label>Domain</Label>
-                <InputWrapper>
+                <DomainWrapper>
                   <Pre>www.there.pm/</Pre>
                   <Input
-                    placeholder="There"
+                    placeholder=""
                     type="text"
                     name="domain"
                     onChange={handleChange}
@@ -109,13 +109,13 @@ export default class setting extends React.Component<{}, State> {
                     valid={touched.domain && !errors.domain}
                     fullWidth
                   />
-                </InputWrapper>
+                </DomainWrapper>
                 {touched.domain && errors.domain ? (
                   <Error>{errors.name}</Error>
                 ) : (
                   <Hint>
                     Share the link www.there.pm/{!values.domain
-                      ? 'there'
+                      ? 'YourDomain'
                       : values.domain}{' '}
                     to add anyone with an allowed email domains to your team
                     home.
@@ -140,7 +140,7 @@ export default class setting extends React.Component<{}, State> {
                 <PrimaryButton type="submit" disabled={isSubmitting} blue>
                   Update
                 </PrimaryButton>
-                <SecondryButton>Cancel</SecondryButton>
+                <SecondaryButton>Cancel</SecondaryButton>
                 {touched.password &&
                   errors.password && <div>{errors.password}</div>}
               </form>
@@ -167,7 +167,7 @@ const CountainerTeam = styled.div`
   width: 540px;
 `
 
-const InputWrapper = styled.div`
+const DomainWrapper = styled.div`
   display: flex;
   min-height: 34px;
   line-height: 34px;

@@ -2,7 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Label = (props: any) => <StyledLabel>{props.children}</StyledLabel>
+export const Label = (props: any) => <StyledLabel {...props} />
 
 const StyledLabel = styled.label`
   display: block;

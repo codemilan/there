@@ -137,10 +137,13 @@ export default class setting extends React.Component<{}, State> {
                 </Hint>
                 <Line />
 
-                <PrimaryButton type="submit" disabled={isSubmitting} blue>
-                  Update
-                </PrimaryButton>
-                <SecondaryButton>Cancel</SecondaryButton>
+                <ButtonsWrapper>
+                  <PrimaryButton type="submit" disabled={isSubmitting} blue>
+                    Update
+                  </PrimaryButton>
+                  <SecondaryButton>Cancel</SecondaryButton>
+                </ButtonsWrapper>
+
                 {touched.password &&
                   errors.password && <div>{errors.password}</div>}
               </form>
@@ -179,4 +182,8 @@ const Pre = styled.div`
   letter-spacing: 0.04em;
 
   color: rgba(67, 83, 92, 0.92);
+`
+
+const ButtonsWrapper = styled.div`
+  margin-top: 12px;
 `

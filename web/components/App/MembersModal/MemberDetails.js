@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 
 // Local
 import MemberPhoto from '../Person/MemberPhoto'
-import { PrimaryButton } from '../../shared/Buttons'
+import { PrimaryButton } from '../../shared/Buttons/index'
 import Clock from '../../shared/vectors/Clock'
 import Working from '../../shared/vectors/Working'
 import Sleeping from '../../shared/vectors/Sleeping'

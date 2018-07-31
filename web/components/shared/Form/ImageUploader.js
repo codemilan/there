@@ -14,6 +14,7 @@ const ImageUploader = ({ src, ...props }: Props) => (
 
 const Wrapper = styled.div`
   width: 100%;
+  margin-bottom: 12px;
 `
 const ImgWrapper = styled.div`
   width: 74px;

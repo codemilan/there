@@ -7,7 +7,6 @@ export { InlineButton } from './InlineButton'
 const BaseButton = styled.button`
   min-width: 98px;
   padding: 7px 11px;
-  margin-top: 12px;
   margin-right: 10px;
 
   background: #ffffff;

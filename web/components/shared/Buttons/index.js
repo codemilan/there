@@ -35,7 +35,7 @@ export const PrimaryButton = styled(BaseButton)`
   }
 `
 
-export const SecondryButton = styled(BaseButton)`
+export const SecondaryButton = styled(BaseButton)`
   color: #333333;
   &:hover {
     background: #f3f3f3;

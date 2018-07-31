@@ -16,9 +16,14 @@ export default class Nav extends Component {
   }
 
   render() {
+    const { clock = false, navBorder = false } = this.props
+
     return (
       <Wrapper>
-        <NavContainer border={this.state.scrolled}>
+        <NavContainer
+          border={navBorder || this.state.scrolled}
+          navBorder={navBorder}
+        >
           <Grid>
             <Left>
               <Logo>
@@ -26,7 +31,7 @@ export default class Nav extends Component {
               </Logo>
 
               <Items>
-                <Link href="/app" passHref passActive>
+                <Link href="/app" passHref passActive exact>
                   <LinkItem>Team</LinkItem>
                 </Link>
                 <Link href="/app/schedule" passHref passActive>
@@ -36,8 +41,8 @@ export default class Nav extends Component {
             </Left>
 
             <Center>
-              <Status />
-              {false && <Clock />}
+              {clock ? <Clock /> : <Status />}
+              {/* {false && <Clock />} */}
               {false && <PageTitle>Finish setting up your account!</PageTitle>}
             </Center>
 

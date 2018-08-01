@@ -1,34 +1,40 @@
 // @flow
-import React from 'react'
 import styled from 'styled-components'
 
 // Local
-export { PrimaryButton } from './PrimaryButton'
+export { InlineButton } from './InlineButton'
 
-export const InlineButton = (props: any) => <InlineButtonWrapper {...props} />
+const BaseButton = styled.button`
+  min-width: 98px;
+  padding: 7px 11px;
+  margin-right: 10px;
+`
 
-// Styles
-const InlineButtonWrapper = styled.button`
-  padding: 1px 1px;
-  font-size: ${p => p.theme.fontSmall13}px;
-  line-height: 1;
-
-  border: none;
+export const PrimaryButton = styled(BaseButton)`
+  border: 1px solid #d2d2d2;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 1px rgba(22, 34, 37, 0.06);
+  border-radius: 3px;
   cursor: pointer;
-  background: none;
-  text-decoration: underline;
-  text-decoration-color: ${p => p.theme.grayDark2};
-  color: ${p => p.theme.tealDark2};
+  outline: none;
 
-  transition: color 120ms ease, background 120ms ease;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  background: #3daae8;
+  color: #fff;
 
   &:hover {
-    color: ${p => p.theme.grayDark3};
-    background: ${p => p.theme.grayLight1};
+    background: #3597d0;
   }
+`
 
-  &:focus {
-    outline: none;
-    text-decoration-color: ${p => p.theme.grayDark3};
+export const SecondaryButton = styled(BaseButton)`
+  color: #333333;
+
+  &:hover {
+    background: #f3f3f3;
   }
 `

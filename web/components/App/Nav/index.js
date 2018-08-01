@@ -13,6 +13,7 @@ type Props = {
   title?: string,
   blackLogo?: boolean,
   authenticated?: boolean,
+  navBorder?: boolean,
 }
 
 export default class Nav extends Component<Props, { scrolled: boolean }> {
@@ -25,11 +26,14 @@ export default class Nav extends Component<Props, { scrolled: boolean }> {
   }
 
   render() {
-    const { title, authenticated, blackLogo } = this.props
+    const { title, authenticated, blackLogo, navBorder } = this.props
 
     return (
       <Wrapper>
-        <NavContainer border={this.state.scrolled}>
+        <NavContainer
+          border={navBorder || this.state.scrolled}
+          navBorder={navBorder}
+        >
           <Grid>
             <Left>
               <Link href="/" passHref={true}>

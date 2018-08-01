@@ -35,7 +35,7 @@ services:
       - there
 
   prisma:
-    image: prismagraphql/prisma:1.12
+    image: prismagraphql/prisma:1.13.2
     restart: always
     ports:
       - 4466:4466

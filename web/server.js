@@ -7,7 +7,7 @@ import next from 'next'
 import Raven from 'shared/raven'
 
 const PORT = parseInt(process.env.PORT, 10) || 3000
-const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_DEV = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev: IS_DEV, dir: __dirname })
 const handle = app.getRequestHandler()

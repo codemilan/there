@@ -1,10 +1,7 @@
 // @flow
-import React from 'react'
 import styled from 'styled-components'
 
-export const HugeLabel = (props: any) => <StyledLabel {...props} />
-
-const StyledLabel = styled.label`
+export const HugeLabel = styled.label`
   display: block;
   font-weight: 500;
   font-size: ${p => p.theme.fontLarge20}px;

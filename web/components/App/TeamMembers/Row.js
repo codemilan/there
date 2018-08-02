@@ -10,7 +10,7 @@ type Props = {
   photoSrcSet: string,
   name: string,
   email: string,
-  onRoleChange: () => void,
+  onRoleChange: any,
 }
 
 const Row = ({ photoSrcSet, name, email, onRoleChange }: Props) => (

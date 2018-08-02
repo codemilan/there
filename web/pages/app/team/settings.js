@@ -6,7 +6,6 @@ import { Formik } from 'formik'
 // Local
 import { NarrowContainer } from '../../../components/shared/Container'
 import Nav from '../../../components/App/Nav'
-import SubNav from '../../../components/App/SubNav'
 import TeamSubNav from '../../../components/App/Nav/TeamSubNav'
 import { Space } from '../../../components/shared/Space'
 import { HugeLabel } from '../../../components/shared/Form/HugeLabel'
@@ -33,9 +32,7 @@ export default class setting extends React.Component<{}, State> {
   render = () => (
     <>
       <Nav clock={true} navBorder={true} />
-      <SubNav>
-        <TeamSubNav />
-      </SubNav>
+      <TeamSubNav />
       <Space height={50} />
 
       <NarrowContainer>

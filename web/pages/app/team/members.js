@@ -48,20 +48,20 @@ export default class Members extends React.Component<{}, State> {
             <Row
               photoSrcSet="/static/profiles/Alex.jpg"
               name="Mohammad Rajabifard"
-              email="b.rajabifard@gmail.com"
+              email="mo.rajbi@gmail.com"
               permission="Admin"
               onRoleChange={this.roleChanged}
             />
             <Row
               photoSrcSet="/static/profiles/Phil.jpg"
-              name="Phil Rajabifard"
-              email="b.rajabifard@gmail.com"
+              name="Phil Plückthun"
+              email="phil@kitten.sh"
               permission="Member"
               onRoleChange={this.roleChanged}
             />
             <Row
               photoSrcSet="/static/profiles/Luke.jpg"
-              name="Phil Luke"
+              name="Behnam Rajabifard"
               email="b.rajabifard@gmail.com"
               permission="Member"
               onRoleChange={this.roleChanged}

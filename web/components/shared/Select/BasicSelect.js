@@ -9,7 +9,7 @@ import ChevronDown from '../vectors/ChevronDown'
 type Props = {
   items: string[],
   defaultSelectedItem: string,
-  onChange: s => void,
+  onChange: (selection: string) => void,
 }
 
 class BasicSelect extends Component {
@@ -17,7 +17,7 @@ class BasicSelect extends Component {
     const {
       onChange,
       items,
-      defaultSelectedItem,
+      defaultSelectedItem = 'Admin',
       itemToString = item => item || '',
     }: Props = this.props
 
@@ -25,7 +25,7 @@ class BasicSelect extends Component {
       <Downshift
         itemToString={itemToString}
         defaultSelectedItem={defaultSelectedItem}
-        onChange={selection => onChange(selection)}
+        onChange={onChange}
       >
         {({
           getRootProps,
@@ -42,8 +42,7 @@ class BasicSelect extends Component {
         }) => (
           <Wrapper {...getRootProps({ refKey: 'innerRef' })}>
             <Button {...getToggleButtonProps()}>
-              <SelectValue>{inputValue ? inputValue : 'Admin'}</SelectValue>
-
+              <SelectValue>{inputValue}</SelectValue>
               <ChevronDown />
             </Button>
 

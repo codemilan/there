@@ -2,6 +2,7 @@
   "name": "there",
   "version": "0.0.1",
   "dependencies": {
+    "clipboard-copy": "2.0.0",
     "downshift": "2.0.10",
     "fast-memoize": "2.4.0",
     "flow-bin": "0.77.0",

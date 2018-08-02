@@ -7,18 +7,19 @@ import { Wrapper as DropdownWrapper, ButtonItem } from '../DropdownMenu'
 import ChevronDown from '../vectors/ChevronDown'
 
 type Props = {
-  onChange: any,
+  items: string[],
+  defaultSelectedItem: string,
+  onChange: s => void,
 }
 
 class BasicSelect extends Component {
   render() {
-    const { onChange }: Props = this.props
-
     const {
-      items = ['Admin', 'Member'],
-      itemToString = item => item || '',
+      onChange,
+      items,
       defaultSelectedItem,
-    } = this.props
+      itemToString = item => item || '',
+    }: Props = this.props
 
     return (
       <Downshift

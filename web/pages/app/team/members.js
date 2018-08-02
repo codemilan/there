@@ -49,18 +49,21 @@ export default class Members extends React.Component<{}, State> {
               photoSrcSet="/static/profiles/Alex.jpg"
               name="Mohammad Rajabifard"
               email="b.rajabifard@gmail.com"
+              permission="Admin"
               onRoleChange={this.roleChanged}
             />
             <Row
               photoSrcSet="/static/profiles/Phil.jpg"
               name="Phil Rajabifard"
               email="b.rajabifard@gmail.com"
+              permission="Member"
               onRoleChange={this.roleChanged}
             />
             <Row
               photoSrcSet="/static/profiles/Luke.jpg"
               name="Phil Luke"
               email="b.rajabifard@gmail.com"
+              permission="Member"
               onRoleChange={this.roleChanged}
             />
           </tbody>

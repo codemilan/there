@@ -10,10 +10,11 @@ type Props = {
   photoSrcSet: string,
   name: string,
   email: string,
+  permission: string,
   onRoleChange: any,
 }
 
-const Row = ({ photoSrcSet, name, email, onRoleChange }: Props) => (
+const Row = ({ photoSrcSet, name, email, permission, onRoleChange }: Props) => (
   <tr>
     <td>
       <MemberItem>
@@ -32,7 +33,11 @@ const Row = ({ photoSrcSet, name, email, onRoleChange }: Props) => (
       </MemberItem>
     </td>
     <td>
-      <BasicSelect onChange={onRoleChange} />
+      <BasicSelect
+        onChange={onRoleChange}
+        defaultSelectedItem={permission}
+        items={['Admin', 'Member']}
+      />
     </td>
   </tr>
 )

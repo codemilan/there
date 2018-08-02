@@ -1,14 +1,15 @@
 //@flow
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type Props = {
   src?: string,
+  avatar?: boolean,
 }
 
-const ImageUploader = ({ src, ...props }: Props) => (
+const ImageUploader = ({ src, avatar, ...props }: Props) => (
   <Wrapper>
-    <ImgWrapper>{src && <img src={src} alt="" />}</ImgWrapper>
+    <ImgWrapper avatar={avatar}>{src && <img src={src} alt="" />}</ImgWrapper>
   </Wrapper>
 )
 
@@ -17,15 +18,12 @@ const Wrapper = styled.div`
   margin-bottom: 12px;
 `
 const ImgWrapper = styled.div`
-  width: 74px;
-  height: 74px;
-  padding: 3px;
-
   background: #f9f9f9;
   border: 1px solid #ecf1f3;
   box-sizing: border-box;
   border-radius: 6px;
   cursor: pointer;
+  overflow: hidden;
 
   img {
     width: 100%;
@@ -36,6 +34,19 @@ const ImgWrapper = styled.div`
   &:hover {
     box-shadow: 0 0 3px #f5ecec;
   }
+
+  ${p =>
+    p.avatar
+      ? css`
+          width: 84px;
+          height: 84px;
+          border-radius: 100%;
+        `
+      : css`
+          width: 74px;
+          height: 74px;
+          padding: 3px;
+        `};
 `
 
 export default ImageUploader

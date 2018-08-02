@@ -21,6 +21,7 @@ const theme = {
 
   // Global Sizes
   containerWidth: 1200,
+  containerNarrowWidth: 540,
   radius: 6,
   radiusSmall: 3,
   radiusBig: 8,

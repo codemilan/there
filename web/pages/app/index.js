@@ -7,6 +7,7 @@ import Nav from '../../components/App/Nav'
 import Map from '../../components/App/Map'
 import SubNav from '../../components/App/SubNav'
 import MembersModal from '../../components/App/MembersModal'
+import InputSelect from '../../components/shared/Select'
 
 type State = {
   selectedMemberId: string | null,
@@ -21,7 +22,9 @@ export default class App extends React.Component<{}, State> {
     return (
       <>
         <Nav />
-        <SubNav />
+        <SubNav>
+          <InputSelect />
+        </SubNav>
         <Space height={20} />
         <Map onMemberSelect={this.memberSelected} />
         <MembersModal

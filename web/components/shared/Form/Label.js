@@ -6,10 +6,18 @@ export const Label = (props: any) => <StyledLabel {...props} />
 
 const StyledLabel = styled.label`
   display: block;
-  font-weight: 500;
-  font-size: ${p => p.theme.fontLarge20}px;
-  letter-spacing: 0.03em;
-  margin-bottom: 12px;
+  font-size: ${p => p.theme.fontLarge14}px;
+  margin-bottom: 26px;
 
-  color: #43535c;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #bec9d1;
+
+  > div,
+  > input {
+    margin-top: 8px;
+  }
 `

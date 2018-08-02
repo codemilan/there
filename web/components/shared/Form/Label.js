@@ -16,7 +16,8 @@ const StyledLabel = styled.label`
 
   color: #bec9d1;
 
-  input {
+  > div,
+  > input {
     margin-top: 8px;
   }
 `

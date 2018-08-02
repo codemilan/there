@@ -83,7 +83,6 @@ export default class Account extends React.Component<{}, State> {
                     <InlineButton>Change email</InlineButton>
                   </EmailText>
                 </Label>
-                {touched.email && errors.email && <Error>{errors.email}</Error>}
 
                 <Label>
                   Given Name
@@ -96,8 +95,8 @@ export default class Account extends React.Component<{}, State> {
                     valid={touched.name && !errors.name}
                     fullWidth
                   />
+                  {touched.name && errors.name && <Error>{errors.name}</Error>}
                 </Label>
-                {touched.name && errors.name && <Error>{errors.name}</Error>}
 
                 <Label>
                   Family Name
@@ -110,9 +109,9 @@ export default class Account extends React.Component<{}, State> {
                     valid={touched.familyName && !errors.familyName}
                     fullWidth
                   />
+                  {touched.familyName &&
+                    errors.familyName && <Error>{errors.familyName}</Error>}
                 </Label>
-                {touched.familyName &&
-                  errors.familyName && <Error>{errors.familyName}</Error>}
                 <Line />
 
                 <ButtonsWrapper>
@@ -160,7 +159,7 @@ const StyledEmail = styled.span`
   margin-right: 12px;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: lowercase;
 
   color: rgba(67, 83, 92, 0.92);

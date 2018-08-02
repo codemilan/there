@@ -7,7 +7,7 @@ import AutosizeInput from 'react-input-autosize'
 import { Wrapper as DropdownWrapper, ButtonItem } from '../DropdownMenu'
 import ChevronDown from '../vectors/ChevronDown'
 
-class Select extends Component {
+class InputSelect extends Component {
   render() {
     const {
       items = ['Everyone', 'No one'],
@@ -86,7 +86,7 @@ class Select extends Component {
   }
 }
 
-export default Select
+export default InputSelect
 
 // Styles
 const Wrapper = styled.div`

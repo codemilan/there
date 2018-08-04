@@ -1,29 +1,18 @@
+// @flow
+import * as React from 'react'
 import styled, { css } from 'styled-components'
 
 // Local
-import { Link } from '../shared/Link'
 import { Container } from '../shared/Container'
-import Select from '../shared/Select'
 
-const SubNav = ({ settingNav = false, ...props }) => (
+type Props = {
+  children?: React.Node,
+  flexAlign?: string,
+}
+
+const SubNav = ({ flexAlign, children }: Props) => (
   <Wrapper>
-    <FlexContainer settingNav={settingNav}>
-      {!settingNav ? (
-        <Select />
-      ) : (
-        <SettingNav>
-          <Link href="/app/team/setting" passHref passActive>
-            <Item>Settings</Item>
-          </Link>
-          <Link href="/app/team/members" passHref passActive>
-            <Item>Members</Item>
-          </Link>
-          <Link href="/app/team/billing" passHref passActive>
-            <Item>Billing</Item>
-          </Link>
-        </SettingNav>
-      )}
-    </FlexContainer>
+    <FlexContainer flexAlign={flexAlign}>{children}</FlexContainer>
   </Wrapper>
 )
 
@@ -36,25 +25,9 @@ const Wrapper = styled.nav`
 
 const FlexContainer = styled(Container)`
   ${p =>
-    p.settingNav &&
+    p.flexAlign &&
     css`
       display: flex;
-      justify-content: flex-end;
+      justify-content: ${p.flexAlign};
     `};
-`
-
-const SettingNav = styled.div`
-  display: flex;
-  align-items: center;
-  height: 56px;
-`
-
-const Item = styled.a`
-  padding-left: 25px;
-
-  font-family: ${p => p.theme.fontTitle};
-  font-size: 15px;
-  text-decoration: none;
-
-  color: ${p => (p.active ? 'black' : p.theme.grayDark2)};
 `

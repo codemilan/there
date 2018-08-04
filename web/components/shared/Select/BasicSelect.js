@@ -1,24 +1,31 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import Downshift from 'downshift'
-import AutosizeInput from 'react-input-autosize'
 
 // Local
 import { Wrapper as DropdownWrapper, ButtonItem } from '../DropdownMenu'
 import ChevronDown from '../vectors/ChevronDown'
 
-class Select extends Component {
+type Props = {
+  items: string[],
+  defaultSelectedItem: string,
+  onChange: (selection: string) => void,
+}
+
+class BasicSelect extends Component {
   render() {
     const {
-      items = ['Everyone', 'No one'],
+      onChange,
+      items,
+      defaultSelectedItem = 'Admin',
       itemToString = item => item || '',
-      defaultSelectedItem,
-    } = this.props
+    }: Props = this.props
 
     return (
       <Downshift
         itemToString={itemToString}
         defaultSelectedItem={defaultSelectedItem}
+        onChange={onChange}
       >
         {({
           getRootProps,
@@ -35,25 +42,7 @@ class Select extends Component {
         }) => (
           <Wrapper {...getRootProps({ refKey: 'innerRef' })}>
             <Button {...getToggleButtonProps()}>
-              <Label {...getLabelProps()}>Show</Label>
-              <Input
-                minWidth={70}
-                spellCheck={false}
-                placeholder="Filter..."
-                {...getInputProps({
-                  onClick: e => {
-                    e.target.select()
-                  },
-                  onKeyDown: e => {
-                    // Since the parent is the button!
-                    e.stopPropagation()
-
-                    if (e.key === 'Enter') {
-                      selectItemAtIndex(0)
-                    }
-                  },
-                })}
-              />
+              <SelectValue>{inputValue}</SelectValue>
               <ChevronDown />
             </Button>
 
@@ -86,7 +75,7 @@ class Select extends Component {
   }
 }
 
-export default Select
+export default BasicSelect
 
 // Styles
 const Wrapper = styled.div`
@@ -106,7 +95,7 @@ const Button = styled.button`
 
   cursor: pointer;
   color: ${p => p.theme.grayDark2};
-  border: 1px solid ${p => p.theme.grayLight1};
+  border: none;
   border-radius: ${p => p.theme.radiusSmall}px;
   background: none;
   outline: none;
@@ -116,38 +105,8 @@ const Button = styled.button`
     border-color: ${p => p.theme.grayDark1};
     color: ${p => p.theme.grayDark3};
   }
-`
-
-const Label = styled.label`
-  cursor: pointer;
-`
-
-const Input = styled(AutosizeInput).attrs({
-  extraWidth: 4,
-  style: {
-    display: 'inline-flex',
-    fontSize: 14,
-  },
-})`
-  height: 100%;
-  align-self: stretch;
-  display: flex;
-
-  > input {
-    font-size: ${p => p.theme.fontMedium14}px;
-    vertical-align: middle;
-
-    padding-left: 7px;
-    align-self: stretch;
-
-    color: ${p => p.theme.grayDark3};
-    border: none;
-    background: none;
-    outline: none;
-
-    ::placeholder {
-      color: ${p => p.theme.grayDark1};
-    }
+  &:hover {
+    background: #f9f9f9;
   }
 `
 
@@ -161,4 +120,8 @@ const Option = styled(ButtonItem).attrs({
   size: 'small',
 })`
   cursor: pointer;
+`
+
+const SelectValue = styled.div`
+  margin-right: 10px;
 `

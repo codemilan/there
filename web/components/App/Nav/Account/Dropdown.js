@@ -10,7 +10,7 @@ const AccountDropdown = ({ isOpen = false }) => (
   <PosedWrapper pose={isOpen ? 'open' : 'closed'}>
     <Dropdown.GroupTitle wide={true}>Settings</Dropdown.GroupTitle>
 
-    <Link href="/account" passHref>
+    <Link href="/app/account" passHref>
       <AccountItem
         name="Mohammad Rajabifard"
         email="guillermo.rauch@gmail.com"

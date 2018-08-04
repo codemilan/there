@@ -20,7 +20,8 @@ type Props = {
   status: MemberStatus,
   size: OnMapPhotoSize,
   clickable?: boolean,
-  onClick: () => void,
+  onClick?: () => void,
+  ring?: boolean,
 }
 
 const MemberPhoto = (props: Props) => {
@@ -28,8 +29,9 @@ const MemberPhoto = (props: Props) => {
     status,
     size: sizeName,
     photoSrcSet,
-    onClick,
+    onClick = () => {},
     clickable = false,
+    ring = true,
   } = props
   const borderWidth = photoSizeToBorderSizeMap[sizeName]
   const whiteGap = photoSizeToWhiteGapMap[sizeName]
@@ -41,9 +43,10 @@ const MemberPhoto = (props: Props) => {
       size={size}
       whiteGap={whiteGap}
       borderWidth={borderWidth}
+      ring={ring}
       onClick={onClick}
     >
-      <CircleWrapper clickable={clickable} status={status}>
+      <CircleWrapper clickable={clickable} status={status} ring={ring}>
         <Photo srcSet={photoSrcSet} />
       </CircleWrapper>
     </Wrapper>
@@ -65,9 +68,13 @@ const CircleWrapper = styled.div`
   transition: box-shadow 130ms ease, transform 130ms ease-in-out,
     filter 130ms ease-in-out;
 
-  box-shadow: var(--white-gap-shadow),
-    var(--border-shadow)
-      ${p => (p.clickable ? `, 0 3px 10px 2px rgba(0, 0, 0, 0.1);` : ``)};
+  ${p =>
+    p.ring &&
+    css`
+      box-shadow: var(--white-gap-shadow),
+        var(--border-shadow)
+          ${p => (p.clickable ? `, 0 3px 10px 2px rgba(0, 0, 0, 0.1);` : ``)};
+    `};
 `
 
 const Wrapper = styled.div`

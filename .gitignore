@@ -11,8 +11,9 @@ package-lock.json
 now-secrets.json
 
 # Web
-web/.next
+.next
 web/out
 
 # Builds
 build-*
+build

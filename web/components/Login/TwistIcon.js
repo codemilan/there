@@ -2,7 +2,7 @@
 import React from 'react'
 
 const TwistIcon = (props: any) => (
-  <svg viewBox="0 0 31 24" fill="none" width="1em" height="auto" {...props}>
+  <svg viewBox="0 0 31 24" fill="none" width="1em" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

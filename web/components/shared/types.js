@@ -3,5 +3,3 @@
 export type MemberStatus = 'working' | 'asleep' | 'focused' | 'not-disturb'
 
 export type Point = { x: number, y: number }
-
-export type LogInMethods = 'google' | 'twist' | 'email'

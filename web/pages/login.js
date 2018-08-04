@@ -7,52 +7,24 @@ import { SERVER_URL, CLIENT_URL } from '../utils/api'
 // Local
 import AppNav from '../components/App/Nav'
 import LoginForm from '../components/Login/Form'
-import type { LogInMethods } from '../components/shared/types'
+import LoginButton from '../components/Login/Button'
 
-type State = {
-  emailChosen: boolean,
-  emailValue: string,
-}
-
-class Login extends Component<{}, State> {
-  state = {
-    emailChosen: false,
-    emailValue: '',
-  }
-
+class Login extends Component<{}> {
   render() {
     return (
       <>
         <AppNav authenticated={false} title="Login to your account!" />
-        <LoginForm
-          emailChosen={this.state.emailChosen}
-          emailValue={this.state.emailValue}
-          onEmailSend={this.emailSent}
-          onChoose={this.choosed}
-        />
+        <LoginForm>
+          <LoginButton method="google" onClick={this.googleClicked} />
+        </LoginForm>
       </>
     )
   }
 
-  choosed = (method: LogInMethods) => {
-    const redirectUrl = `${CLIENT_URL}/app`
+  redirectUrl = `${CLIENT_URL}/app`
 
-    switch (method) {
-      case 'google':
-        window.location.assign(`${SERVER_URL}/auth/google?r=${redirectUrl}`)
-
-      case 'email':
-        this.setState({ emailChosen: true })
-
-      default:
-        return
-    }
-  }
-
-  emailSent = () => {
-    const { emailValue: email } = this.state
-
-    // Send email
+  googleClicked = () => {
+    window.location.assign(`${SERVER_URL}/auth/google?r=${this.redirectUrl}`)
   }
 }
 

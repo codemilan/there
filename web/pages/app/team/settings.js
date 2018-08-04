@@ -12,7 +12,7 @@ import { Label } from '../../../components/shared/Form/Label'
 import { Input } from '../../../components/shared/Input'
 import MultipleInput from '../../../components/shared/MultipleInput'
 import ImageUploader from '../../../components/shared/Form/ImageUploader'
-import { Line } from '../../../components/shared/Form/Line'
+import { MediumGapLine } from '../../../components/shared/Form/Line'
 import Error from '../../../components/shared/Form/Error'
 import Hint from '../../../components/shared/Form/Hint'
 import {
@@ -89,12 +89,12 @@ export default class setting extends React.Component<{}, State> {
                   </Hint>
                 )}
 
-                <Line />
+                <MediumGapLine />
 
                 <Label>Icon</Label>
                 <ImageUploader src="/static/thereTeam.png" />
                 <SecondaryButton>Upload Team Icon</SecondaryButton>
-                <Line />
+                <MediumGapLine />
 
                 <Label>Domain</Label>
                 <DomainWrapper>
@@ -122,7 +122,7 @@ export default class setting extends React.Component<{}, State> {
                   </Hint>
                 )}
 
-                <Line />
+                <MediumGapLine />
 
                 <Label>Allowed Email domainss</Label>
 
@@ -135,7 +135,7 @@ export default class setting extends React.Component<{}, State> {
                   Anyone with email addresses at these domainss can
                   automatically join your team.
                 </Hint>
-                <Line />
+                <MediumGapLine />
 
                 <ButtonsWrapper>
                   <PrimaryButton type="submit" disabled={isSubmitting} blue>
@@ -173,7 +173,7 @@ const CountainerTeam = styled.div`
 const DomainWrapper = styled.div`
   display: flex;
   min-height: 34px;
-  line-height: 34px;
+  mediumgapline-height: 34px;
 `
 
 const Pre = styled.div`

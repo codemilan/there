@@ -8,10 +8,9 @@ import convertColor from '../../utils/convert-color'
 // Local
 import GoogleIcon from './GoogleIcon'
 import TwistIcon from './TwistIcon'
-import type { LogInMethods } from '../shared/types'
 
 type Props = {
-  method: LogInMethods,
+  method: 'google' | 'twist' | 'email' | 'loginCode',
   onClick?: () => void,
 }
 
@@ -19,15 +18,17 @@ const mapMethodToText = {
   google: 'Continue with Google',
   twist: 'Continue with Twist',
   email: 'Continue with Email',
+  loginCode: 'Continue with Login Code',
 }
 
 const mapMethodToIcon = {
   google: <GoogleIcon />,
   twist: <TwistIcon />,
   email: null,
+  loginCode: null,
 }
 
-const LoginButton = ({ method = 'email', ...props }: Props) => (
+const LoginButton = ({ method, ...props }: Props) => (
   <StyledButton {...props}>
     {mapMethodToIcon[method] && (
       <IconWrapper>{mapMethodToIcon[method]}</IconWrapper>
@@ -48,8 +49,10 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
   user-select: none;
+
+  margin-top: 4px;
+  margin-bottom: 4px;
 
   font-weight: 500;
   font-size: ${p => p.theme.fontLarge17}px;

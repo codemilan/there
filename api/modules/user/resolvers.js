@@ -1,12 +1,11 @@
 // @flow
-import type { GraphQLContext } from '../../graphql'
+// Local
+// - Queries
+import currentUser from './currentUser'
 
 const userResolvers = {
   Query: {
-    currentUser: () => 'It`s current User! Say Hi.',
-    users: (_: any, args: any, ctx: GraphQLContext, info: any) => {
-      return ctx.db.query.users({})
-    },
+    currentUser,
   },
 
   Mutation: {},

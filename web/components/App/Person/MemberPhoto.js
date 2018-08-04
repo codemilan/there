@@ -65,7 +65,9 @@ const CircleWrapper = styled.div`
   overflow: hidden;
 
   border-radius: 50%;
-  transition: box-shadow 120ms ease, transform 120ms ease, filter 150ms ease;
+  transition: box-shadow 130ms ease, transform 130ms ease-in-out,
+    filter 130ms ease-in-out;
+
   ${p =>
     p.ring &&
     css`
@@ -96,9 +98,15 @@ const Wrapper = styled.div`
 
       &:hover ${CircleWrapper} {
         box-shadow: var(--white-gap-shadow), var(--border-shadow),
-          0 4px 12px 3px rgba(0, 0, 0, 0.1);
-        transform: scale(1.1);
+          0 4px 10px 3px rgba(0, 0, 0, 0.1);
+        transform: scale(1.15);
         filter: contrast(1.01) brightness(1.05);
+      }
+
+      &:active ${CircleWrapper} {
+        transform: scale(1);
+        filter: contrast(0.98) brightness(0.98);
+        box-shadow: var(--white-gap-shadow), var(--border-shadow);
       }
     `};
 `
@@ -109,4 +117,6 @@ const Photo = styled(RetinaImage)`
 
   object-fit: cover;
   object-position: center;
+  -webkit-user-drag: none;
+  user-select: none;
 `

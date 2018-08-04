@@ -1,6 +1,6 @@
-const Logo = props => (
+const Logo = ({ black, ...props }) => (
   <svg width={34} height={34} viewBox="0 0 34 34" fill="none" {...props}>
-    <rect width={34} height={34} rx={6} fill="#74C5FF" />
+    <rect width={34} height={34} rx={6} fill={black ? `#777` : `#74C5FF`} />
     <path
       fillRule="evenodd"
       clipRule="evenodd"

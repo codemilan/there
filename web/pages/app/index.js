@@ -14,7 +14,7 @@ type State = {
 }
 
 export default class App extends React.Component<{}, State> {
-  state = { selectedMemberId: 'xxx' }
+  state = { selectedMemberId: null }
 
   render() {
     const { selectedMemberId } = this.state

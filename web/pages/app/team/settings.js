@@ -12,7 +12,7 @@ import { HugeLabel } from '../../../components/shared/Form/HugeLabel'
 import { Input } from '../../../components/shared/Input'
 import MultipleInput from '../../../components/shared/MultipleInput'
 import ImageUploader from '../../../components/shared/Form/ImageUploader'
-import { Line } from '../../../components/shared/Form/Line'
+import { MediumGapLine } from '../../../components/shared/Form/Line'
 import Error from '../../../components/shared/Form/Error'
 import Hint from '../../../components/shared/Form/Hint'
 import {
@@ -89,12 +89,12 @@ export default class setting extends React.Component<{}, State> {
                 </Hint>
               )}
 
-              <Line />
+              <MediumGapLine />
 
               <HugeLabel>Icon</HugeLabel>
               <ImageUploader src="/static/thereTeam.png" />
               <SecondaryButton>Upload Team Icon</SecondaryButton>
-              <Line />
+              <MediumGapLine />
 
               <HugeLabel>Domain</HugeLabel>
               <DomainWrapper>
@@ -114,14 +114,13 @@ export default class setting extends React.Component<{}, State> {
                 <Error>{errors.name}</Error>
               ) : (
                 <Hint>
-                  Share the link www.there.pm/{!values.domain
-                    ? 'YourDomain'
-                    : values.domain}{' '}
-                  to add anyone with an allowed email domains to your team home.
+                  Share the link www.there.pm/
+                  {!values.domain ? 'YourDomain' : values.domain} to add anyone
+                  with an allowed email domains to your team home.
                 </Hint>
               )}
 
-              <Line />
+              <MediumGapLine />
 
               <HugeLabel>Allowed Email domainss</HugeLabel>
 
@@ -134,7 +133,7 @@ export default class setting extends React.Component<{}, State> {
                 Anyone with email addresses at these domainss can automatically
                 join your team.
               </Hint>
-              <Line />
+              <MediumGapLine />
 
               <ButtonsWrapper>
                 <PrimaryButton type="submit" disabled={isSubmitting} blue>
@@ -162,7 +161,7 @@ export default class setting extends React.Component<{}, State> {
 const DomainWrapper = styled.div`
   display: flex;
   min-height: 34px;
-  line-height: 34px;
+  mediumgapline-height: 34px;
 `
 
 const Pre = styled.div`

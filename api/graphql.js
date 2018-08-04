@@ -4,31 +4,18 @@ import path from 'path'
 import depthLimit from 'graphql-depth-limit'
 import { importSchema } from 'graphql-import'
 import { ApolloServer } from 'apollo-server-express'
-import { Prisma } from 'prisma-binding'
 
 // Local
 import resolvers from './modules/resolvers'
+import type { User } from 'shared/prisma/types'
+import db, { type Db } from './db'
 
-// Types
-import type { Query, Mutation, Subscription } from 'prisma/generated'
-
-const prisma = new Prisma({
-  // Datamodel; It's different from our API `typedefs`
-  typeDefs: path.resolve(__dirname, '../prisma/generated.graphql'),
-  endpoint:
-    process.env.NODE_ENV === 'development'
-      ? `http://prisma:4466`
-      : process.env.PRISMA_ENDPOINT,
-  secret: process.env.PRISMA_SECRET,
-  debug: debug.enabled,
-})
+const IS_PROD = process.env.NODE_ENV === 'development'
 
 // All GraphQL API type defenitions
 const typeDefs = importSchema(path.resolve(__dirname, './schema.graphql'))
 
-export type GraphQLContext = {
-  db: { query: Query, mutation: Mutation, subscription: Subscription },
-}
+export type GraphQLContext = { db: Db, user: ?User }
 
 export const applyGraphQlMiddleware = (serverRegistration: any) => {
   const server = new ApolloServer({
@@ -36,8 +23,10 @@ export const applyGraphQlMiddleware = (serverRegistration: any) => {
     resolvers,
     validationRules: [depthLimit(10)],
     tracing: true,
-    context: (): GraphQLContext => ({
-      db: prisma,
+    engine: IS_PROD ? { apiKey: process.env.APOLLO_ENGINE_API_KEY } : null,
+    context: ({ req }): GraphQLContext => ({
+      db,
+      user: req.user || null,
     }),
   })
 

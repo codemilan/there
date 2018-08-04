@@ -6,7 +6,7 @@ export const InlineButton = (props: any) => <InlineButtonWrapper {...props} />
 
 // Styles
 const InlineButtonWrapper = styled.button`
-  padding: 0 1px;
+  padding: 1px 1px;
   font-size: ${p => p.theme.fontSmall13}px;
   line-height: 1;
 
@@ -14,13 +14,18 @@ const InlineButtonWrapper = styled.button`
   cursor: pointer;
   background: none;
   text-decoration: underline;
-  text-decoration-color: ${p => p.theme.grayLight1};
-  color: ${p => p.theme.tealDark1};
+  text-decoration-color: ${p => p.theme.grayDark2};
+  color: ${p => p.theme.tealDark2};
 
   transition: color 120ms ease, background 120ms ease;
 
   &:hover {
-    color: ${p => p.theme.grayDark2};
+    color: ${p => p.theme.grayDark3};
     background: ${p => p.theme.grayLight1};
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration-color: ${p => p.theme.grayDark3};
   }
 `

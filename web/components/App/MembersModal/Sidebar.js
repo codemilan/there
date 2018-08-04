@@ -16,6 +16,7 @@ export default class Sidebar extends Component<Props, State> {
   state = {
     inputValue: '',
   }
+
   render() {
     return (
       <>
@@ -99,9 +100,8 @@ export default class Sidebar extends Component<Props, State> {
       </>
     )
   }
-  onClickMember = () => {
-    console.log('test')
-  }
+
+  onClickMember = () => {}
 }
 
 // Veriables
@@ -164,7 +164,7 @@ const MemberItem = styled.div`
           }
         `
       : css`
-          transition: background 150ms ease;
+          transition: background 100ms ease-out;
 
           &:hover {
             background: rgba(0, 0, 0, 0.04);

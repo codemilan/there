@@ -1,4 +1,5 @@
-import { Component } from 'react'
+// @flow
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 // Local
@@ -7,16 +8,25 @@ import { Container } from '../../shared/Container'
 import LogoVector from '../../shared/vectors/Logo'
 import Account from './Account'
 import PageTitle from './PageTitle'
-import Status from './Status'
-import Clock from './Clock'
 
-export default class Nav extends Component {
+type Props = {
+  title?: string,
+  blackLogo?: boolean,
+  authenticated?: boolean,
+  navBorder?: boolean,
+}
+
+export default class Nav extends Component<Props, { scrolled: boolean }> {
   state = {
     scrolled: false,
   }
 
+  static defaultProps = {
+    authenticated: true,
+  }
+
   render() {
-    const { clock = false, navBorder = false } = this.props
+    const { title, authenticated, blackLogo, navBorder } = this.props
 
     return (
       <Wrapper>
@@ -26,29 +36,29 @@ export default class Nav extends Component {
         >
           <Grid>
             <Left>
-              <Logo>
-                <LogoVector />
-              </Logo>
+              <Link href="/" passHref={true}>
+                <Logo>
+                  <LogoVector black={blackLogo} />
+                </Logo>
+              </Link>
 
               <Items>
-                <Link href="/app" passHref passActive exact>
-                  <LinkItem>Team</LinkItem>
-                </Link>
-                <Link href="/app/schedule" passHref passActive>
-                  <LinkItem>Schedule</LinkItem>
-                </Link>
+                {authenticated && (
+                  <>
+                    <Link href="/app" passHref passActive>
+                      <LinkItem>Team</LinkItem>
+                    </Link>
+                    <Link href="/app/schedule" passHref passActive>
+                      <LinkItem>Schedule</LinkItem>
+                    </Link>
+                  </>
+                )}
               </Items>
             </Left>
 
-            <Center>
-              {clock ? <Clock /> : <Status />}
-              {/* {false && <Clock />} */}
-              {false && <PageTitle>Finish setting up your account!</PageTitle>}
-            </Center>
+            <Center>{title && <PageTitle>{title}</PageTitle>}</Center>
 
-            <Right>
-              <Account />
-            </Right>
+            <Right>{authenticated && <Account />}</Right>
           </Grid>
         </NavContainer>
       </Wrapper>
@@ -59,14 +69,19 @@ export default class Nav extends Component {
     typeof window !== 'undefined' ? document.getElementById('app-root') : null
 
   componentDidMount() {
-    this.appRoot.addEventListener('scroll', this.scrolled, true)
+    this.appRoot && this.appRoot.addEventListener('scroll', this.scrolled, true)
   }
 
   componentWillUnmount() {
-    this.appRoot.removeEventListener('scroll', this.scrolled, true)
+    this.appRoot &&
+      this.appRoot.removeEventListener('scroll', this.scrolled, true)
   }
 
   scrolled = () => {
+    if (!this.appRoot) {
+      return
+    }
+
     if (this.appRoot.scrollTop < 5 && this.state.scrolled === true) {
       this.setState({ scrolled: false })
     } else if (this.appRoot.scrollTop >= 5 && this.state.scrolled === false) {
@@ -125,7 +140,7 @@ const Right = styled.div`
   justify-content: flex-end;
 `
 
-const Logo = styled.div`
+const Logo = styled.a`
   margin-right: 18px;
 `
 

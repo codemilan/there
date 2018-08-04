@@ -11,17 +11,27 @@ import compression from 'compression'
 // Local
 import Raven from 'shared/Raven'
 import { applyGraphQlMiddleware } from './graphql'
+import { init as initPassport } from './authentication'
+import middlewares from './routes/middlewares'
+import authRoutes from './routes/auth'
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001
 
 // API server
 const app = express()
 
+// Initialize passport
+initPassport()
+
 // Trust the now proxy
 app.set('trust proxy', true)
 
 // Send all responses as gzip
 app.use(compression())
+
+app.use(middlewares)
+
+app.use('/auth', authRoutes)
 
 // Connect the express app to Apollo GraphQL server
 applyGraphQlMiddleware({ app })

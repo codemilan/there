@@ -17,7 +17,7 @@ CMD ["yarn", "dev:web"]
 FROM development as builder
 
 COPY . /app
-RUN yarn build:web -o /public
+RUN yarn build:web
 
 # -----------------------------------------------------------------------------
 # production
@@ -25,6 +25,7 @@ RUN yarn build:web -o /public
 FROM node:9.7.0-alpine
 WORKDIR /app
 
-COPY --from=builder /public /public
+COPY --from=builder /app/build/web /app
 
 ENV NODE_ENV=production
+CMD ["yarn", "start:web"]

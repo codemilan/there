@@ -2,12 +2,13 @@ type User {
   id: ID! @unique
   name: String!
   firstName: String!
+  lastName: String!
   profilePhoto: String
   email: String! @unique
-  username: String
+  username: String @unique
   contactInfo: String
   profession: String
-  timezone: String!
+  timezone: String
   baseCity: String
   baseCountry: String
   baseLatitude: Float
@@ -16,7 +17,7 @@ type User {
   memberOf: [WorkspaceMember!]!
   vacations: [UserVacation!]!
   workHours: UserWorkHours
-  googleProviderId: String
+  googleProviderId: String @unique
   pendingSetup: Boolean
   deletedAt: DateTime
   lastSeen: DateTime

@@ -1,5 +1,5 @@
 // @flow
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // Local
 export { InlineButton } from './InlineButton'
@@ -8,7 +8,9 @@ const BaseButton = styled.button`
   min-width: 98px;
   padding: 7px 11px;
   margin-right: 10px;
+`
 
+export const PrimaryButton = styled(BaseButton)`
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
@@ -22,10 +24,6 @@ const BaseButton = styled.button`
   text-align: center;
   letter-spacing: 0.02em;
 
-  ${p => (p.blue ? css`` : css``)};
-`
-
-export const PrimaryButton = styled(BaseButton)`
   background: #3daae8;
   color: #fff;
 
@@ -36,6 +34,7 @@ export const PrimaryButton = styled(BaseButton)`
 
 export const SecondaryButton = styled(BaseButton)`
   color: #333333;
+
   &:hover {
     background: #f3f3f3;
   }
